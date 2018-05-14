@@ -1,0 +1,99 @@
+{% extends "admindashboard.html" %}
+    
+    {% block title %}
+    {{ block.super }} - {{customtitle}}
+    {% endblock title %}
+    
+    {% block overridemsg %}
+        <p>Total number of records validated and saved  <code><b>{{totalsaved}}</b></code> From here you can download.</p>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}
+        {% if user.is_superuser %}
+            {% if availablefiles %}
+                <form role="form" class="form-horizontal" method="post" action="/submission/permanentpurging/information/searching/">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="sample-table-1">
+                            {% csrf_token %} 
+                                <!--
+                                {% if deletemode %}
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-green pull-rights" name ="submits">
+                                            Delete Selected Records <i class="fa fa-sarrow-circle-right"></i>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                -->
+                                <thead>
+                                    <tr>
+                                        <!--
+                                        {% if deletemode %}
+                                                <th class="centers">
+                                                    <div class="checkbox-tables">
+                                                        <input type="checkbox" class="flat-grey selectall">
+                                                    </div>
+                                                </th>
+                                        {% endif %}
+                                        -->
+                                        {% for file_h in file_headers %}
+                                            {% if file_h|title == "Id" %}
+                                                <th>Download</th>
+                                            {% else %}
+                                                <th>{{file_h|title}}</th>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                                    
+                                <tbody>
+                                    
+                                        <!--
+                                        {% if deletemode %}
+                                                <td class="center">
+                                                    <div class="checkbox-tables">
+                                                        <input type="checkbox" class="flat-grey foocheck" name="{{data.id}}">
+                                                    </div>
+                                                </td>
+                                        {% endif %}
+                                        --> 
+                                    {% for files in availablefiles %}
+                                        <tr>
+                                            <td><a href="/importdata/downloadsaved/{{files.id}}/" class="btn btn-green fa fa-download"> Download</a></td>
+                                            <td>{{files.name}}</td>
+                                            <td>{{files.filename}}</td>
+                                            <td>{{files.date}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            {% else %}
+                <p>Unfortunately there are no validation made yet
+                        <a class="btn btn-green" href="/validation/beginvalidation/validatedata/">
+                        Got to Validation  <i class="fa fa-arrow-circle-right"></i></a>
+                </p>
+
+            {% endif %}        
+        
+            <div class="pagination">
+                        <span class="step-links">
+                        {% if availablefiles.has_previous %}
+                            <a href="?page={{ availablefiles.previous_page_number }}">Previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ availablefiles.number }} of {{ availablefiles.paginator.num_pages }}
+                        </span>
+
+                        {% if availablefiles.has_next %}
+                            <a href="?page={{ availablefiles.next_page_number }}">Next</a>
+                        {% endif %}
+                        </span>
+            </div>
+        {% else %}
+            <p><b>System Policy:</b> Your account is unauthorized to view this page</p>
+        {% endif %}
+        
+    {% endblock extendsuserbase %}

@@ -1,0 +1,60 @@
+{% extends "admindashboard.html" %}
+
+
+    {% block extendsuserbase %}
+    {% if staffs %}
+        <table class="table table-hover" id="sample-table-1">
+            <thead>
+                <tr>
+                    {% for staff_h in user_headers %}
+                        {% if staff_h|title == "Id" %}
+                            <th class="reducesize there-size">Action</th>
+                        {% else %}
+                            <th class="reducesize there-size">{{staff_h|title}}</th>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for users in staffs %}
+                    <tr>
+                        <td><a href="/user/update/userid/{{users.id }}">Edit</a></td>
+                        <td>{{users.firstname}}</td>
+                        <td>{{users.lastname}}</td>
+                        <td>{{users.username.username}}</td>
+                        <td>{{users.phone}}</td>
+                        <td>{{users.gender}}</td>
+                        <td>{{users.can_edit}}</td>
+                        <td>{{users.can_upload_file}}</td>
+                        <td>{{users.can_process_data}}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            </div>
+            {% else %}
+                <p>Unfortunately there are staffs added yet <a href="/user/new/userstaff">Add New Staff</a></p>
+            {% endif %}
+            
+            <!---pagination--->
+            <div class="panel-heading border-light">
+                <div class="pagination">
+                    <span class="step-links">
+                    {% if staffs.has_previous %}
+                        <a href="?page={{ staffs.previous_page_number }}">Previous</a>
+                    {% endif %}
+        
+                    <span class="current">
+                        Page {{ staffs.number }} of {{ staffs.paginator.num_pages }}
+                    </span>
+        
+                    {% if staffs.has_next %}
+                        <a href="?page={{ staffs.next_page_number }}">Next</a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+            
+    {% endblock extendsuserbase %}

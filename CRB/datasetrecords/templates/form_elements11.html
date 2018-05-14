@@ -1,0 +1,64 @@
+{% extends "dashboard.html" %}
+
+    <!--block for the title-->
+    {% block title %}
+    {{ block.super }} - {{datasetinput|title}}
+    {% endblock title %}
+    <!--ending the bock for the title -->
+    
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    {% block dataheader %}
+        <h1><b>{{who|title}}</b> <small><code><b>Dataset reference</b></code> or <code><b>Data ref</b></code> below, should correspond to the above</small></h1>
+    {% endblock dataheader %}
+    
+    {% block subview %}
+   
+    {% endblock subview %}
+
+    
+    {% block blockaction %}
+    
+    {% endblock blockaction %}
+    
+    {% block maincontent %}
+  
+        <div class="panel panel-white panel-tabs">
+            <div class="panel-heading">
+                <h4 class="panel-title">{{dataset_active}}<span class="text-bold">Navigation--></span></h4>
+            </div>
+            
+                <div class="tabbable">
+                    <ul id="myTab2" class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#panel_tab_example1">
+                                Enter here data {{datactive}}
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#panel_tab_example2">
+                                Primary Contact Information
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#panel_tab_example3">
+                                Secondary Contact Information
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            
+        </div>
+    {% endblock maincontent %}
+    
+    

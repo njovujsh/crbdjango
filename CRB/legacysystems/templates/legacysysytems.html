@@ -1,0 +1,79 @@
+{% extends "admindashboard.html" %}
+    {% load my_custom_tags %}
+    {% block overridemsg %}
+        <h4 class="center-it">We Don't care what other Systems do But. We shall Dynamically do what they do.</h4>
+        <p>Integrate existing systems with our system.</p>
+        <p>NOTE: Requires Developer/Maintainer help and notification.</p>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}
+    <div class="col-sm-12s">
+        {% if errors %}
+            <p style="color:red">The following errors where detected</p>
+            {{errors}}
+        {% endif %}
+            <div class="panel panel-whites">
+                {% if is_update %}
+                    <form role="form" class="form-horizontal" method="post" action="/rlegacy/rupdate/{{RULEID}}/">
+                        {% csrf_token %}
+                        {{ formset.management_form }}
+                        {% if forms %}
+                            {% for form in forms %}
+                                <div class="form-group has-success">
+                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                        {{form.label_tag}}
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        {{ form }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="form-group">      
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-green" name="submits">
+                                Legacy Integrate <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                        <div class="form-group">      
+                        </div>
+                    </form>
+                {% else %}
+                    <form role="form" class="form-horizontal" method="post" action=".">
+                        {% csrf_token %}
+                        {{ formset.management_form }}
+                        {% if forms %}
+                            {% for form in forms %}
+                                <div class="form-group has-success">
+                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                        {{form.label_tag}}
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        {{ form }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="form-group">      
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-green" name="submits">
+                                Legacy Integrate <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                        <div class="form-group">      
+                        </div>
+                    </form>
+                {% endif %}
+                
+                <p style="margin-left:20px; margin-bottom:20px;">View <a href="/rlegacy/lview/">Active Legacy Systems.</a></p>
+                <div class="form-group">      
+                </div>
+            </div>
+        </div>
+    {% endblock extendsuserbase %}

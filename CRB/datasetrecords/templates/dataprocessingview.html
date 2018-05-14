@@ -1,0 +1,118 @@
+{% extends "admindashboard.html" %}
+    {% load my_custom_tags %}
+    {% block title %}
+    {{ block.super }} - {{customtitle}}
+    {% endblock title %}
+
+
+    {% block exportdata %}
+
+    {% endblock exportdata %}
+
+    {% block updaterecords %}
+
+    {% endblock updaterecords %}
+
+    {% block blockaction %}
+
+    {% endblock blockaction %}
+
+    {% block innercontent %}
+
+    {% endblock innercontent %}
+
+    {% block dataheader %}
+
+
+
+    {% endblock dataheader %}
+
+    {% block extendsuserbase %}
+
+        <div class="col-sm-12s">
+                        <!-- start: TEXT FIELDS PANEL -->
+                {% if perrors %}
+                    <h4 style="maring-left:20px;">Error processing data</h4>
+                    <p style="margin-left:25px; color:red; font-weight:bolder">{{perrors}}</p>
+                {% else %}
+                    <div class="panel panel-whites">
+                            <form role="form" class="form-horizontal" method="post" action="/processing/requesting/information/searching/">
+                                    {% csrf_token %}
+                                    {{ formset.management_form }}
+                                    {% if forms %}
+                                        {% for form in forms %}
+                                            <div class="form-group has-success">
+                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                    {{form.label_tag}}
+                                                </label>
+
+                                                <div class="col-sm-9">
+                                                    {{ form }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="outputformat">Output Format:
+                                                <span class="symbol required"></span>
+                                            </label>
+                                            <label class="col-sm-2 control-label" for="form-field-3">
+                                                    <!--<label for="id_corresponding_records">Corresponding records:</label>-->
+                                            </label>
+
+                                            <div class="col-sm-9">
+                                                <select name="outputformat">
+                                                    <option name="csv1">CSV</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="outputformat">Selecting corresponding records:
+                                                <span class="symbol required"></span>
+                                            </label>
+                                            <p> </p>
+                                            <div class="col-sm-9">
+                                                <select name="dataset">
+                                                    {% for data in datasetrecords %}
+                                                        <option name="{{data.slug}}" value="{{data.slug}}">{{data.slug|title|purge_underscore|putspaces}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="outputformat">Validate Records
+                                                <!--<span class="symbol required"></span>-->
+                                            </label>
+                                            
+                                            <div class="col-sm-9">
+                                                <input type="checkbox" value="True" name="validated">
+                                            </div>
+                                        </div>
+                                        
+                                        <p style="margin-left:20px;">NOTE:
+                                            To Pass Records through validation Subsystem or to Validate Records, please check the above box. <br />
+                                            NOTE: To Undermine validation leave the box blank.<label><strong><code>WARNING</code></strong></label>: Records won't be validated.
+                                        </p>
+                                            
+                                        <div class="form-group">
+                                            
+                                            
+                                        </div>
+                                          
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-green pull-right" name="submits">
+                                                Process Request <i class="fa fa-arrow-circle-right"></i>
+                                            </button>
+                                        </div>
+                                    {% else %}
+                                        <label><strong><code>ERROR:</code></strong><b>Required Headers for data submission are not configured.</b></label><br />
+                                        <label><b>NOTE</b> Only superusers/Administrators can add this required headers.</label>
+                                    {% endif %}
+
+                        </form>
+                    </div>
+                {% endif %}
+        </div>
+    {% endblock extendsuserbase %}

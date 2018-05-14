@@ -1,0 +1,66 @@
+{% extends "admindashboard.html" %}
+     {% block overridemsg %}
+        {% if msg %}
+            <p style="font-weight:bolder; background-color:#12CB12; color:black;">{{msg}}</p>
+        {% endif %}
+      {% endblock overridemsg %}
+    {% block extendsuserbase %}
+    
+    {% if srules %}
+        <a  href= "/srules/" type="submit" class="btn btn-green" name="submits">
+            Add Rule <i class="fa fa-arrow-circle-right"></i>
+        </a>
+
+        <p></p>
+        <table class="table table-hover" id="sample-table-1">
+            <thead>
+                <tr>
+                    {% for rule_h in rule_headers %}
+                        {% if rule_h|title == "Id" %}
+                            <th class="reducesize there-size">Action</th>
+                        {% else %}
+                            <th class="reducesize there-size">{{rule_h|title}}</th>
+                        {% endif %}
+                        
+                    {% endfor %}
+                    <th clas="reducesize there-size">Rule Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rules in srules %}
+                    <tr>
+                        <td><a href="/srules/update/rulesid/{{rules.id}}/" class="btn btn-xs btn-green">Edit</a></td>
+                        <td>{{rules.decision}}</td>
+                        <td>{{rules.source_IP}}</td>
+                        <td>{{rules.description}}</td>
+                        <td>{{rules.date}}</td>
+                        <td><a href="/srules/delete/purge/{{rules.id}}/" class="btn btn-xs btn-red"><i class="fa fa-trash-o"></i> Purge Rule</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            </div>
+            {% else %}
+                <p>Unfortunately there are no srules added yet <a href="/srules/">Add New Firewall Rules</a></p>
+            {% endif %}
+            
+            <!---pagination--->
+            <div class="panel-heading border-light">
+                <div class="pagination">
+                    <span class="step-links">
+                    {% if srules.has_previous %}
+                        <a href="?page={{ srules.previous_page_number }}">Previous</a>
+                    {% endif %}
+        
+                    <span class="current">
+                        Page {{ srules.number }} of {{ srules.paginator.num_pages }}
+                    </span>
+        
+                    {% if srules.has_next %}
+                        <a href="?page={{ srules.next_page_number }}">Next</a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+            
+    {% endblock extendsuserbase %}

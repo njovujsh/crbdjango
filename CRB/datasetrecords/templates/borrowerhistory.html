@@ -1,0 +1,93 @@
+{% extends "admindashboard.html" %}
+    {% load my_custom_tags %}
+    {% block title %}
+    {{ block.super }} - {{datasetview|title|purge_underscore}}
+    {% endblock title %}
+    
+    <!--block for updating records -->
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block viewrecords %}
+    
+    {% endblock viewrecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    {% block searchforms %}
+        <li class="menu-search">
+            <a href="#">
+                <i class="fa fa-search"></i> SEARCH
+            </a>
+            <!-- start: SEARCH POPOVER -->
+            <div class="popover bottom search-box transition-all">
+                <div class="arrow"></div>
+            <div class="popover-content">
+            <!-- start: SEARCH FORM -->
+                <form class="" id="searchform" action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-main-color btn-squared" type="button">
+                            <i class="fa fa-search"></i>
+                        </button> </span>
+                    </div>
+                </form>
+            <!-- end: SEARCH FORM -->
+            </div>
+            
+            </div>
+            <!-- end: SEARCH POPOVER -->
+        </li>
+    {% endblock searchforms %}
+    
+    {% block dataheader %}
+    
+    {% endblock dataheader %}
+    
+    <!--Override the welcome superuser message-->
+    {% block overridemsg %}
+        <div class="space20">
+               
+
+        </div>
+        <!--
+        <label>
+            <input type="text" aria-controls="sample_1" class="form-control input-sm add-width" placeholder="Search">
+        </label>
+        -->
+    {% endblock overridemsg %}
+    <!--ending the overriding method above-->
+    
+    {% block extendsuserbase %}
+            <div class="col-md-6">
+                
+            </div>
+                
+            <table class="table table-striped table-bordered table-hover table-full-width" id="creditstarttable">
+                    <thead>
+                        <tr>
+                            <!--<th class="reducesize there-size">Date</th>-->
+                            <th class="reducesize there-size">Amount</th>
+                            <th class="reducesize there-size">Reference Number</th>
+                        </tr>
+                    </thead>
+                                        
+                    <tbody>
+                        
+                        
+                    {% for data in bhistory.history.all %}
+                        <tr>
+                            <!--<td>{{data.date}}</td>-->
+                            <td>{{data.amount}}</td>
+                            <!--<td>{{data.Branch_Identification_Code}}</td>-->
+                            <td>{{data.account_reference}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+       
+    {% endblock extendsuserbase %}

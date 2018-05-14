@@ -1,0 +1,55 @@
+{% extends "admindashboard.html" %}
+
+    {% load my_custom_tags %}
+    
+    {% block overridemsg %}
+        <div class="row">
+            <p style="margin-left:15px;">Select Dataset/record below and then Select the Date on which the records was validated.</p>
+            <div class="col-sm-6">
+                
+                <div class="form-group">
+                    <label for="form-field-select-1">
+                        Select data for more <span class="text-bold">validation</span> Details 
+                    </label>
+                    
+                    <select id="successvalidationdata" class="form-control ">
+                        <option value="AL"></option>
+                        {% for records in datasetrecords %}
+                            <option value="{{records.slug}}">{{records.slug|purge_underscore|putspaces}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="form-field-select-1">
+                       Select Record By <span class="text-bold">Validation</span> Date 
+                    </label>
+                    
+                    <select id="successvalidationdatabydate" class="form-control">
+                        <option value="AL"></option>
+                        <option value="{{records.slug}}"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}
+        <div class="row">
+           <div class="col-sm-6">
+               <h4 id="uniqueid"></h4>
+               <h4 id="rtype"></h4>
+               <h4 id="vdate"></h4>
+               <h4 id="picode"></h4>
+               <h4 id="trecords"></h4>
+               <h4 id="svalidated"></h4>
+               <h4 id="failedrecords"></h4>
+               <h4 id="passedfields"></h4>
+               <h4 id="failedfield"></h4>
+            </div>
+        </div>
+    {% endblock extendsuserbase %}
+
+

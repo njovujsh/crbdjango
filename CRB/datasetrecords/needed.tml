@@ -1,0 +1,162 @@
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="myTab_example1">
+		<div class="panel-body">
+				{% csrf_token %}
+				{{ formset.management_form }}
+					{% if dataset_active == "credit_application" %}
+						{% for form in clientform %}
+							<div class="form-group has-success">
+								<label class="col-sm-2 control-label" for="form-field-3" >
+									{{form.label_tag}}
+								</label>
+								
+								<div class="col-sm-9">
+										{{form}}
+								</div>
+								<input type="hidden" name="clientUpdatingID" value="{{clientupdatingID}}"> </input>
+							</div>
+						{% endfor %}
+							<h5 class="panel-title" style="color:white;">
+								<a class="accordion-toggle collapsed btn btn-green" data-toggle="collapse" data-parent="#accordion" href="#displayDetails">
+									<i class="icon-arrow fa fa-arrow-circle-right"></i> If Entering borrower status click here.
+								</a>
+							</h5>
+						<hr >
+
+				<div style="" id="displayDetails" class="panel-collapse collapse">
+						{% for form in datasetforms %}
+						<div class="form-group has-success">
+							<label class="col-sm-2 control-label" for="form-field-3" >
+								{{form.label_tag}}
+							</label>
+							
+							<div class="col-sm-9">
+									{{form}}
+							</div>
+							
+						</div>
+					{% endfor %}
+					
+				{% else %}
+					{% for form in datasetforms %}
+						<div class="form-group has-success">
+							<label class="col-sm-2 control-label" for="form-field-3" >
+								{{form.label_tag}}
+							</label>
+							
+							<div class="col-sm-9">
+									{{form}}
+							</div>
+							
+						</div>
+					{% endfor %}
+				{% endif %}
+					
+				{% if generrors %}
+					<div class="form-actions">
+						
+					</div>
+				{% else %}
+					<div class="form-actions">
+						<button type="submit" class="btn btn-green pull-right" name="submitviews">
+							Update And view <i class="fa fa-arrow-circle-right"></i>
+						</button>
+					</div>
+				{% endif %}
+				</div>
+				   
+		</div><!--panel-body-->
+	</div>
+	
+	<div class="tab-pane fade" id="myTab_example2">
+		<div class="panel-body">
+			{% for form in pciforms %}
+			
+				<div class="form-group has-success">
+					<label class="col-sm-2 control-label" for="form-field-3" >
+						{{form.label_tag}}
+					</label>
+					
+					<div class="col-sm-9">
+							{{form}}
+					</div>
+				</div>
+			{% endfor %} 
+		</div>
+	</div>
+	
+	<div class="tab-pane fade" id="myTab_example3">
+		<div class="panel-body">
+		   
+			{% for form in sciforms %}
+			
+				<div class="form-group has-success">
+					<label class="col-sm-2 control-label" for="form-field-3" >
+						{{form.label_tag}}
+					</label>
+					
+					<div class="col-sm-9">
+							{{form}}
+					</div>
+				</div>
+			{% endfor %}
+			
+		</div>
+		
+		<p>
+			
+		</p>
+	</div>
+	
+	<div class="tab-pane fade" id="myTab_example4">
+		<div class="panel-body">
+			{% for form in ieforms %}
+			
+				<div class="form-group has-success">
+					<label class="col-sm-2 control-label" for="form-field-3" >
+						{{form.label_tag}}
+					</label>
+					
+					<div class="col-sm-9">
+							{{form}}
+					</div>
+				</div>
+			{% endfor %} 
+		</div>
+	</div>
+	
+	<div class="tab-pane fade" id="myTab_example5">
+		<div class="panel-body">
+			{% for form in idforms %}
+			
+				<div class="form-group has-success">
+					<label class="col-sm-2 control-label" for="form-field-3" >
+						{{form.label_tag}}
+					</label>
+					
+					<div class="col-sm-9">
+							{{form}}
+					</div>
+				</div>
+			{% endfor %} 
+		</div>
+	</div>
+	
+	<div class="tab-pane fade" id="myTab_example6">
+		<div class="panel-body">
+			{% for form in gscafbforms %}
+			
+				<div class="form-group has-success">
+					<label class="col-sm-2 control-label" for="form-field-3" >
+						{{form.label_tag}}
+					</label>
+					
+					<div class="col-sm-9">
+							{{form}}
+					</div>
+				</div>
+			{% endfor %} 
+		</div>
+	</div>
+	
+</div><!--tabp content-->

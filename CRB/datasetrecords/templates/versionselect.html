@@ -1,0 +1,50 @@
+{% extends "admindashboard.html" %}
+
+    {% block title %}
+    {{ block.super }} - {{customtitle}}
+    {% endblock title %}
+    
+    {% block extendsuserbase %}
+    <div class="col-sm-12s">
+        {% if herrors %}
+	   <h4 style="margin-left:20px;">Carefully examine the following error either fix it or report</h4>
+           <p style="margin-left:25px; color:red; font-weight:bolder;">{{herrors}}
+        {% endif %}
+
+        <div class="panel panel-whites">
+            <h2>Please Select DSS version below to be used in processing</h2> 
+            <div class="panel-body">
+               <form role="form" class="form-horizontal" method="post" action="/processing/sending/headerfiles/version/">
+                   {% csrf_token %}
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="outputformat">Select version number
+                            <span class="symbol required"></span>
+                        </label>
+                                            
+                        <div class="col-sm-9">
+                           <select id="id_file_identifier" name="file_identifier">
+                               <option value="">---------</option>
+                                {% for version in versions %}
+                                    <option value="{{version.id}}" selected="selected">{{version.version_number}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green pull-right" name ="submits">
+                            Proceed to process point <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
+
+               </form>
+            </div>
+
+            <label><code>Customizing</code>: It's not the end.</label>
+            <label>We shall take you to the process point and you will modify required fields.</label>
+            <p> </p>
+        </div>
+    </div>
+
+{% endblock extendsuserbase %}

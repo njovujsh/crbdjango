@@ -1,0 +1,25 @@
+CBA matches Borrowerstake
+
+ENF094
+PI Identification Code, Branch Identification Code and Borrower Client Number must match the PI Identification Code, Branch Identification Code and Client Number (respectively) of a successful record within the CBA File
+
+
+Phase One
+    BC, CAP, CBA, IB and PI
+    
+Phase Two
+    BS(CBA), CCG, CMC, FRA(done), PIS
+    
+    
+    
+Capture FRA -- CAP
+    search name or client number or FSC number
+    
+    Pull data by client number or FSC number, auto pull
+    
+    Get FRA from the credit application
+    
+
+Category Code:
+   Drop down menu
+   

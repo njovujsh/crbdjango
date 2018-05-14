@@ -1,0 +1,111 @@
+#profilenav{
+    background-color:#8B6914;
+    padding:5px 10px;
+    margin-bottom:0px;
+    with:100%;
+    background-color: #191919; /*IE fallback #333333*/
+	/*background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#191919));
+	background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #191919 100%);
+	background-image: linear-gradient(top left 90deg, #acd6ef 0%, #191919 100%);
+        */
+	color:#967A44;
+	height: 35px;
+	/*
+	border-radius: 1px;
+	border: 1px solid #66add6;
+	*/
+	/*box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);*/
+	
+	
+}
+
+#profilenav ul{
+    margin:0;
+	padding:0;
+	list-style:none;
+	margin-top: 5px;
+	float:lefts;
+	
+}
+
+#profilenav ul li{
+    display:inline;
+	margin:0;
+	padding:0;
+	border-right: 1px solid rgba(9,9,9,0.125);
+	margin-top:px;
+}
+
+#profilenav ul li a{
+   color:#999999;
+   text-decoration:none;
+   padding-left: 15px;
+   font-family: "Helvetica Neue", Helvetica, sans-serif;
+   font-weight:bold;
+}
+
+#profilenav ul li a:hover{
+    color:#6EC2E8;
+}
+
+#profilenav li.logoutpush{
+    padding: 0.35em 0px 0.39em 20px;
+	background-image: url('cssimages/Exit.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+#profilenav .welcome{
+    padding-lefst: 400px;
+}
+
+#profilenav .displaytime{
+    padding-left: 100px;
+    color:#999999;
+    font-weight:bolder;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#profilenav .allprofiles{
+    float:right;
+}
+
+#profilenav .welcome{
+    color:#999999;
+    font-weight:bolder;
+    margin-right: 40px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#profilenav ul li.fileuploadimg{
+	/*
+    display:block;
+    position:relative;
+    float: left;
+    */
+    padding: 0.35em 0px 0.35em 20px;
+	background-image: url('cssimages/14Upload.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+/*styling the inner list type*/
+#profilenavs ul ol li{
+    display: none;
+    background-color:;
+}
+
+#profilensavsl ol li a{
+   display: block;
+   color:#999999;
+   text-decoration:none;
+   white-space: nowrap;
+   font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+/*
+#profilenav ul li:hover ol{
+    display: block;
+    position: absolute;
+    background-color:white;
+}
+*/

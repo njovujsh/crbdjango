@@ -1,0 +1,44 @@
+{% extends "dashboard.html" %}
+
+    {% block title %}
+    {{ block.super }}: {{uploadtitle}}
+    {% endblock title %}
+    
+    {% block generalblock %}
+        <body class="lock-screen">
+            <div class="main-ls animated flipInX">
+                <div class="logo">
+                    <img src="assets/images/logo.png">
+                </div>
+                <div class="box-ls">
+                    {% load staticfiles %}
+                    <img src="{% static "/static/datasetsystem/static/assets/images/usera.png"%}" alt="User Avatar">
+                    <div class="user-info">
+                        <h1><i class="fa fa-lock"></i>{{details.username}}</h1>
+                        <span>{{details.email}}</span>
+                        <span>{{details.phone}}</span>
+                        <span>{{details.created}}</span>
+                        <span><em>Please enter your password to un-lock.</em></span>
+                        <form class="form-login" action="/user/auth/relogging/" name="login" id="loggingin" method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="password" placeholder="Password" class="form-control" name="password">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-green" type="submit">
+                                        <i class="fa fa-chevron-right"></i>
+                                    </button> </span>
+                            </div>
+                            <div class="relogin">
+                                <a href="/">
+                                    Not {{details.username}}</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="copyright">
+                    2014 &copy; Rapido by cliptheme.
+                </div>
+            </div>
+            
+        </body>
+    {% endblock generalblock %}

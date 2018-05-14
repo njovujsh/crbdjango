@@ -1,0 +1,34 @@
+{% extends "admindashboard.html" %}
+
+    {% load my_custom_tags %}
+    
+    {% block overridemsg %}
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="form-field-select-1">
+                        Select data for more <span class="text-bold">validation</span> Details 
+                    </label>
+                    
+                    <select id="form-field-select-1" class="form-control">
+                        {% for records in datasetrecords %}
+                            <option value="{{records.slug}}">{{records.slug|purge_underscore}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-sm-6">
+                <div class="form-group">
+                    
+                </div>
+            </div>
+        </div>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}
+                    
+    {% endblock extendsuserbase %}
+
+
+

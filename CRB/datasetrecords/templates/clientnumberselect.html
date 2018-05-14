@@ -1,0 +1,58 @@
+{% extends "admindashboard.html" %}
+    
+    {% load my_custom_tags %}
+    
+    {% block title %}
+    {{ block.super }} - {{clientnumbertitle|title|purge_underscore}}
+    {% endblock title %}
+    
+    {% block overridemsg %}
+    {% load my_custom_tags %}
+        <div class="row">
+            <form method="post" action="/app/process/bynumber/existing/">
+                {% csrf_token %}
+                <div class="col-sm-6">
+                    {% if errormissing %}
+                        <p style="color:#A52A2A;">ERROR: {{errormissing}}</p>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="form-field-select-1">
+                            Please Select Client Number  and Continue<span class="text-bold"></span>  
+                        </label>
+                        
+                        <select id="validatsiondata" class="form-control chosen-select"  name="clientnumber">
+                            {% for number in clientnumber %}
+                                <option value="{{number.Client_Number}}" style="font-weight:bold;">{{number.Client_Number}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="space20">
+                    <div class="btn-groups">
+                        <button type="submit" class="btn btn-green pull-riht" name="submits">
+                            Continue  <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        <p>If clientnumber does not exists please enter new <a href="/app/process/datasetrecord/bouncedcheques/">New Bounced Cheque</a></p>
+        </div>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}       
+        
+        {% if errormsg %}
+            <h4>System module raised an error while handling clientnumber {{clientnumbererror}}</h4>
+            <h3>Analysis on ERROR</h3>
+            <ul>
+                <li>{{errormsg}}</li>
+                <ul>
+                    <p>The above error means that there are two or more records existing with same client number <code>{{clientnumbererror}}</code></p>
+                    <li>Solution</li>
+                    <p>Modify one of the client application number to proceed.</p>
+                </ul>
+            </ul>
+        {% endif %}
+    {% endblock extendsuserbase %}
+

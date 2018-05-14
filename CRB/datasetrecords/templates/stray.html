@@ -1,0 +1,177 @@
+<div class="col-md-6 col-lg-3 col-sm-6">
+    <div class="panel panel-default panel-white core-box">
+        <div class="panel-tools">
+            <a href="#" class="btn btn-xs btn-link panel-close">
+               <i class="fa fa-times"></i>
+            </a>
+        </div>
+        <div class="panel-body no-padding">
+            <div class="partition-red padding-20 text-center core-icon">
+                <!--<i class="fa fa-desktop fa-2x icon-big"></i>-->
+            </div>
+                                        
+            <div class="padding-20 core-content">
+				{% if cbaname %}
+					<h3 class="title block no-margin"><b>{{cbaname}}</b></h3>
+					<span class="subtitle"> Available Records now amount to <code><b>{{cbapath.count}}</b></code></span>
+				{% else %}
+					<h3 class="title block no-margin">Un identified</h3>
+					<span class="subtitle"> Available Records now amount to 0</span>
+				{% endif %}
+            </div>
+        </div>
+                                    
+		<div class="panel-footer clearfix no-padding">
+			<a href="/newupdate/dataupdatingsystem/{{cbaname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-green" data-toggle="tooltip" data-placement="top" title="More Options"><i class="fa fa-cog"></i></a>
+			<a href="/process/sys/data/{{cbaname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add Content"><i class="fa fa-plus"></i></a>
+			<!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+		</div>
+    </div>
+</div>
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                <div class="panel panel-default panel-white core-box">
+                                    <div class="panel-tools">
+                                        <a href="#" class="btn btn-xs btn-link panel-close">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="panel-body no-padding">
+                                        <div class="partition-azure padding-20 text-center core-icon">
+                                            <!--<i class="fa fa-shopping-cart fa-2x icon-big"></i>-->
+                                        </div>
+                                        <div class="padding-20 core-content">
+                                            {% if capname %}
+                                                <h3 class="title block no-margin"><b>{{capname}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to {{cappath.count}}</span>
+                                            {% else %}
+                                                <h3 class="title block no-margin">Un identified</h3>
+                                                <span class="subtitle">Available Records now amount to 0</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer clearfix no-padding">
+										{% if capname %}
+											<a href="/newupdate/dataupdatingsystem/{{capname|lower}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-green" data-toggle="tooltip" data-placement="top" title="More Options"><i class="fa fa-cog"></i></a>
+											<a href="/process/sys/data/{{capname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add Content"><i class="fa fa-plus"></i></a>
+                                        {% endif %}
+                                        <!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                <div class="panel panel-default panel-white core-box">
+                                    <div class="panel-tools">
+                                        <a href="#" class="btn btn-xs btn-link panel-close">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="panel-body no-padding">
+                                        <div class="partition-green padding-20 text-center core-icon">
+                                            <!--<i class="fa fa-bar-chart-o fa-2x icon-big"></i>-->
+                                        </div>
+                                        <div class="padding-20 core-content">
+                                            {% if bcname %}
+                                                <h3 class="title block no-margin"><b>{{bcname}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{bcpath.count}}</b></code></span>
+                                            {% else %}
+                                                <h3 class="title block no-margin"><b>Un identified</b></h3>
+                                                <span class="subtitle">Available Records now amount to 0</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer clearfix no-padding">
+                                        <div class=""></div>
+                                        <a href="/newupdate/dataupdatingsystem/{{bcname|lower}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-green" data-toggle="tooltip" data-placement="top" title="Update Existing Records..."><i class="fa fa-cog"></i></a>
+                                        <a href="/process/sys/data/{{bcname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Record..."><i class="fa fa-plus"></i></a>
+                                        <!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                <div class="panel panel-default panel-white core-box">
+                                    <div class="panel-tools">
+                                        <a href="#" class="btn btn-xs btn-link panel-close">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="panel-body no-padding">
+                                        <div class="partition-blue padding-20 text-center core-icon">
+                                            <!--<i class="fa fa-code fa-2x icon-big"></i>-->
+                                        </div>
+                                        <div class="padding-20 core-content">
+                                            {% if pisname %}
+                                                <h3 class="title block no-margin"><b>{{pisname}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{pispath.count}} </b></code></span>
+                                            {% else %}
+                                                <h3 class="title block no-margin">Un identified</h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{piscount}} </b></code></span>
+                                            {% endif %}
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer clearfix no-padding">
+                                        <a href="/newupdate/dataupdatingsystem/{{pisname|lower}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-green" data-toggle="tooltip" data-placement="top" title="Update Existing Records..."><i class="fa fa-cog"></i></a>
+                                        <a href="/process/sys/data/{{pisname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records..."><i class="fa fa-plus"></i></a>
+                                        <!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                <div class="panel panel-default panel-white core-box">
+                                    <div class="panel-tools">
+                                        <a href="#" class="btn btn-xs btn-link panel-close">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="panel-body no-padding">
+                                        <div class="partition-red padding-20 text-center core-icon">
+                                            <!--<i class="fa fa-desktop fa-2x icon-big"></i>-->
+                                        </div>
+                                        <div class="padding-20 core-content">
+                                            {% if cmcname %}
+                                                <h3 class="title block no-margin"><b>{{cmcname}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{cmcpath.count}}</b></code></span>
+                                            {% else %}
+                                                <h3 class="title block no-margin">Un identified</h3>
+                                                <span class="subtitle">Available Records now amount to 0</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer clearfix no-padding">
+                                        <a href="/newupdate/dataupdatingsystem/{{cmcname|lower}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-green" data-toggle="tooltip" data-placement="top" title="Update Existing Records..."><i class="fa fa-cog"></i></a>
+                                        <a href="/process/sys/data/{{cmcname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records"><i class="fa fa-plus"></i></a>
+                                        <!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                <div class="panel panel-default panel-white core-box">
+                                    <div class="panel-tools">
+                                        <a href="#" class="btn btn-xs btn-link panel-close">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                    <div class="panel-body no-padding">
+                                        <div class="partition-azure padding-20 text-center core-icon">
+                                            <!--<i class="fa fa-shopping-cart fa-2x icon-big"></i>-->
+                                        </div>
+                                        <div class="padding-20 core-content">
+                                            {% if ccgname %}
+                                                <h3 class="title block no-margin"><b>{{ccgname}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{ccgpath.count}}</b></code></span>
+                                            {% else %}
+                                                <h3 class="title block no-margin">Un identified</h3>
+                                                <span class="subtitle">Available Records now amount to 0 </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer clearfix no-padding">
+                                        <a href="/newupdate/dataupdatingsystem/{{ccgname|lower}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-green" data-toggle="tooltip" data-placement="top" title="Update Existing Records..."><i class="fa fa-cog"></i></a>
+                                        <a href="/process/sys/data/{{ccgname}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records"><i class="fa fa-plus"></i></a>
+                                        <!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+                                    </div>
+                                </div>
+                            </div>

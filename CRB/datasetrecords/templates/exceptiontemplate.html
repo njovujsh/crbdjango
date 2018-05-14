@@ -1,0 +1,60 @@
+{% extends "admindashboard.html" %}
+    {% load my_custom_tags %}
+    <!--block for the title-->
+    {% block title %}
+    {{ block.super }} - {{datasetinput|title}}
+    {% endblock title %}
+    <!--ending the bock for the title -->
+    
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    {% block dataheader %}
+        
+    {% endblock dataheader %}
+    
+    {% block subview %}
+   
+    {% endblock subview %}
+
+    
+    {% block blockaction %}
+    
+    {% endblock blockaction %}
+    
+     
+    {% block coverall %}
+    
+    {% endblock coverall %}
+    
+    {% block overridemsg %}
+        <div class="panel-heading">
+            <h1 style="color:red; font-weight:bolder;">{{internalserver}}</h1>
+            
+        </div>
+        
+    {% endblock overridemsg %}
+    {% block extendsuserbase %}
+        <div class="panel panel-white">
+             <h3>Error Message is: {{Error}}</h3>
+             
+            <p> </p>
+            <p>Try the following</p>
+            <ul>
+                <li>Go back to the work you have been doing</li>
+                <li>Refresh the browser</li>
+                <li>Logout and Login again</li>
+            </ul>
+            <p>If the error persists report</p>
+        </div>
+    {% endblock extendsuserbase %}
+

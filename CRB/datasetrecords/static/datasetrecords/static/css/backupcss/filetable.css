@@ -1,0 +1,56 @@
+#filetables{
+    overflow-y:scroll;
+    width:100%;
+    height:100%;
+}
+
+#filedatatable{
+   height:100%;
+   background-color:gray;
+}
+
+#filedatatable table{
+   width:100%;
+   border-collapse: collapse;
+}
+
+
+#filedatatable th{
+   height:30px;
+   background-color:#B8D30B;
+   border-left: 2px solid #B8D30B;
+   background:#6EC2E8; /*#0085C3;*/ /* #6E2585; #019CBB*/ /* Old browsers #6E2585*/
+   color:#1A1A1A;
+   font-size:11px;
+   font-weight:bold;
+   color:white;
+   font-size:17px;
+   /*
+	background: rgba(226,226,226,1);
+	background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 2%, rgba(215,215,215,1) 43%, rgba(209,209,209,1) 99%, rgba(254,254,254,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(2%, rgba(219,219,219,1)), color-stop(43%, rgba(215,215,215,1)), color-stop(99%, rgba(209,209,209,1)), color-stop(100%, rgba(254,254,254,1)));
+	background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 2%, rgba(215,215,215,1) 43%, rgba(209,209,209,1) 99%, rgba(254,254,254,1) 100%);
+	background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 2%, rgba(215,215,215,1) 43%, rgba(209,209,209,1) 99%, rgba(254,254,254,1) 100%);
+	background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 2%, rgba(215,215,215,1) 43%, rgba(209,209,209,1) 99%, rgba(254,254,254,1) 100%);
+	background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 2%, rgba(215,215,215,1) 43%, rgba(209,209,209,1) 99%, rgba(254,254,254,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+	*/
+}
+
+#filedatatable tr{
+   border-bottom: 1px solid #0085C3;
+    height:28px;
+    background-color:#F9F9F9;
+    font-size:14px;
+}
+
+#filedatatable tr:nth-child(even){
+    background-color:#EDF4C3;
+}
+
+#filedatatable td{
+   border-left:2px solid #B8D30B;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    color:#7F7F7F;
+}
+

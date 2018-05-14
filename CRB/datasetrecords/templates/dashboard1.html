@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- start: HEAD -->
+    <head>
+        {% load staticfiles %}
+        {% load my_custom_tags %}
+        <title>{% block title %} {{ basetitle }} {% endblock title %}</title>
+        <!-- start: META -->
+        <meta charset="utf-8" />
+        <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- end: META -->
+        <!-- start: MAIN CSS -->
+        <!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,200,100,800' rel='stylesheet' type='text/css'>-->
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/bootstrap/css/bootstrap.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/font-awesome/css/font-awesome.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/iCheck/skins/all.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/animate.css/animate.min.css"%}">
+        <!-- end: MAIN CSS -->
+        <!-- start: CSS REQUIRED FOR SUBVIEW CONTENTS -->
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/owl-carousel/owl-carousel/owl.theme.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/owl-carousel/owl-carousel/owl.transitions.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/summernote/dist/summernote.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/toastr/toastr.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-select/bootstrap-select.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/DataTables/media/css/DT_bootstrap.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"%}">
+        <!-- end: CSS REQUIRED FOR THIS SUBVIEW CONTENTS-->
+        <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/weather-icons/css/weather-icons.min.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/plugins/nvd3/nv.d3.min.css"%}">
+        
+        <!--personal-->
+        <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+        <!-- start: CORE CSS -->
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/css/styles.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/css/styles-responsive.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/css/plugins.css"%}">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/css/themes/theme-default.css"%}" type="text/css" id="skin_color">
+        <link rel="stylesheet" href="{% static "/static/datasetrecords/static/assets/css/print.css"%}" type="text/css" media="print"/>
+        <!-- end: CORE CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static "/static/datasetrecords/static/css/datasetbase.css"%}">
+        <link rel="stylesheet" type="text/css" href="{% static "/static/datasetrecords/static/css/uploader.css"%}">
+        <!--<link rel="shortcut icon" href="favicon.ico" />-->
+        
+        <!--
+        <script src="{% static "/static/datasetrecords/static/javascript/jquery.formset.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/javascript/urlify.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/javascript/jquery.formset.js"%}"></script>
+        <script src="{% static "/static/manual/static/javascript/selecthandler.js"%}"></script>
+        -->
+    </head>
+    <!-- end: HEAD -->
+    <!-- start: BODY -->
+    {% block bodyconver %}
+    <body>
+ {% block generalblock %}
+        <!-- start: SLIDING BAR (SB) -->
+        <div id="slidingbar-area">
+            <div id="slidingbar">
+                <div class="row">
+                    <!-- start: SLIDING BAR FIRST COLUMN -->
+                    <div class="col-md-4 col-sm-4">
+                        
+                        
+                    </div>
+                    <!-- end: SLIDING BAR FIRST COLUMN -->
+                    <!-- start: SLIDING BAR SECOND COLUMN -->
+                    <div class="col-md-4 col-sm-4">
+                       
+                        <!--myRECENT WORK--->
+                        
+                    </div>
+                    <!-- end: SLIDING BAR SECOND COLUMN -->
+                    <!-- start: SLIDING BAR THIRD COLUMN -->
+                    <div class="col-md-4 col-sm-4">
+                        <h2>My Info</h2>
+                        <address class="margin-bottom-40">
+                            {{userdetails.username}}
+                            
+                            P: {{userdetails.phone}}
+                            <br>
+                            Email:
+                            <a href="#">
+                                {{userdetails.email}}
+                            </a>
+                        </address>
+                        <a class="btn btn-transparent-white" href="/user/logout/">
+                            <i class="fa fa-pencil"></i>Logout
+                        </a>
+                    </div>
+                    <!-- end: SLIDING BAR THIRD COLUMN -->
+                </div>
+                <div class="row">
+                    <!-- start: SLIDING BAR TOGGLE BUTTON -->
+                    <div class="col-md-12 text-center">
+                        <a href="#" class="sb_toggle"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                    <!-- end: SLIDING BAR TOGGLE BUTTON -->
+                </div>
+            </div>
+        </div>
+        <!-- end: SLIDING BAR -->
+        <div class="main-wrapper">
+            <!-- start: TOPBAR -->
+            <header class="topbar navbar navbar-inverse navbar-fixed-top inner">
+                <!-- start: TOPBAR CONTAINER -->
+                
+                <div class="container">
+                    
+                    <div class="navbar-header">
+                        <a class="sb-toggle-left hidden-md hidden-lg" href="#main-navbar">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <!-- start: LOGO -->
+                        <a class="navbar-brand" href="/home/dashboard/">
+                            
+                            <!--<img src="assets/images/logo.png" alt="Rapido"/>-->
+                            Swirling
+                        </a>
+                        <!-- end: LOGO -->
+                    </div>
+                    
+                    <div class="topbar-tools">
+                        <!-- start: TOP NAVIGATION MENU -->
+                        <ul class="nav navbar-right">
+                            <!-- start: USER DROPDOWN -->
+                            <li class="dropdown current-user">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                                    <img src="{% static "/static/datasetrecords/static/assets/images/user.png"%}" class="img-circle" alt=""> <span class="username hidden-xs">{{user.username}}</span> <i class="fa fa-caret-down "></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-dark">
+                                    
+                                    <li>
+                                        <a href="/user/lockscreen/">
+                                            Lock Screen
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/logout/">
+                                            Log Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- end: USER DROPDOWN -->
+                            <li class="right-menu-toggle">
+                                <a href="#" class="sb-toggle-right">
+                                    <i class="fa fa-caret-right"></i> <span class="notifications-count badge badge-default hide">&hArr;</span>
+                                    
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- end: TOP NAVIGATION MENU -->
+                    </div>
+                </div>
+                <!-- end: TOPBAR CONTAINER -->
+            </header>
+            <!-- end: TOPBAR -->
+            <!-- start: PAGESLIDE LEFT -->
+            <a class="closedbar inner hidden-sm hidden-xs" href="#">
+            </a>
+            <nav id="pageslide-left" class="pageslide inner">
+                <div class="navbar-content">
+                    <!-- start: SIDEBAR -->
+                    <div class="main-navigation left-wrapper transition-left">
+                        <div class="navigation-toggler hidden-sm hidden-xs">
+                            <a href="#main-navbar" class="sb-toggle-left">
+                                
+                            </a>
+                        </div>
+                        <div class="user-profile border-top padding-horizontal-10 block">
+                            <div class="inline-block">
+                                <img src="{% static "/static/datasetrecords/static/assets/images/usera.png"%}" alt="">
+                            </div>
+                            <div class="inline-block">
+                                {% if user.is_superuser %}
+                                    <h5 class="no-margin"> Welcome "Superuser"</h5>
+                                    <h4 class="no-margin">{{user.username}} </h4>
+                                {% else %}
+                                    <h5 class="no-margin"> Welcome</h5>
+                                    <h4 class="no-margin">{{user.username}}</h4>
+                                {% endif %}
+                                <a class="btn user-options sb_toggle">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!--tabs-->
+                        
+                        <!-- start: MAIN NAVIGATION MENU -->
+                        <ul class="main-navigation-menu">
+                            <li class="active open">
+                                {% if user.is_superuser %}
+                                    <a href="/home/dashboard/"><i class="green fa fa-home  fa-bank"></i> <span class="title">Dashboard</span>
+                                    <span class="label label-default pull-right ">Superuser</span> </a>
+                                {% else %}
+                                    <a href="/home/dashboard/"><i class="green fa fa-home  fa-bank"></i> <span class="title">Dashboard</span>
+                                    <span class="label label-default pull-right ">Superuser</span> </a>
+                                {% endif %}
+                            </li>
+                            
+                            <div class="col-sm-6s">
+                                <div class="tabbable partition-dark">
+                                    <ul id="myTab6" class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#myTab6_example1 " data-toggle="tab">
+                                                Phase I
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#myTab6_example2" data-toggle="tab">
+                                                Phase II
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#myTab6_example3" data-toggle="tab">
+                                                Misc
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    
+                                    <!--tab contents-->
+                                    {% load my_custom_tags %}
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="myTab6_example1">
+                                            
+                                            <li>
+                                                <a href="#"><i class="fa fa-database"></i><span class="title">Jonathan</span><i class="icon-arrow"></i> </a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="{{ navs.get_new_path }}">
+                                                            New Records<i class="icon-arrow"></i>
+                                                        </a>
+                                                        
+                                                    </li>
+                                                    
+                                                    <li>
+                                                        <a href="{{navs.get_view_path}}/">
+                                                            <span class="title">View Records</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                                   
+                                        </div>
+                
+                                        <div class="tab-pane fade" id="myTab6_example2">
+                                            
+                                            
+                                            <p>
+                                                <a href="#myTab6_example3" class="btn btn-blue show-tab">
+                                                    Go to tab 3
+                                                </a>
+                                            </p>
+                                        </div>
+                
+                                        <div class="tab-pane fade" id="myTab6_example3">
+                                            
+                                                <a href="#myTab6_example1" class="btn btn-purple show-tab">
+                                                    Return to tab 1
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            {% load my_custom_tags %}
+                            
+                            {% for navs in datasetrecords %}
+                                {% if navs.dataset %}
+                                    <li>
+                                        <a href="#"><i class="fa fa-database"></i><span class="title">{{navs.dataset|purge_underscore}}</span><i class="icon-arrow"></i> </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="{{ navs.get_new_path }}">
+                                                    New Records<i class="icon-arrow"></i>
+                                                </a>
+                                                
+                                            </li>
+                                            <li>
+                                                <a href="{{navs.get_view_path}}/">
+                                                    <span class="title">View Records</span>
+                                                </a>
+                                            </li>
+                                            {% if user.is_superuser %}
+                                                <li>
+                                                    <!--
+                                                    <a href="/newupdate/dataupdatingsystem/{{navs.navigation_title|lower}}">
+                                                        <span class="title">Update Records</span>
+                                                    </a>
+                                                    -->
+                                                </li>
+                                                <li>
+                                                    <a href="{{navs.get_process_path}}">
+                                                        <span class="title">Process Records</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <!--
+                                                    <a href="/purgerecords/deleting/{{navs.navigation_title|lower}}/True">
+                                                        <span class="title">Delete Records</span>
+                                                    </a>
+                                                    -->
+                                                </li>
+                                            {% endif %}
+                                            
+                                        </ul>
+                                    </li>
+                                    
+                                {% else %}
+                                    <li><a href="{{ navs.get_abs_path|lower }}">{{navs.datasetrecords|title}}</a></li>
+                                {% endif %}
+                            
+                            {% endfor %}
+                        </ul>
+                        <!-- end: MAIN NAVIGATION MENU -->
+                    </div>
+                    <!-- end: SIDEBAR -->
+                </div>
+                <div class="slide-tools">
+                    <div class="col-xs-6 text-left no-padding">
+                        
+                        <a class="btn btn-sm statuss" href="/user/lockscreen/">
+                           <i class="fa fa-dot-circles-o text-greens"></i> <span>Lock Screen</span>
+                        </a>
+                    </div>
+                    <div class="col-xs-6 text-right no-padding">
+                        <a class="btn btn-sm log-out text-right" href="/user/logout/">
+                            <i class="fa fa-power-off"></i> Log Out
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <!-- end: PAGESLIDE LEFT -->
+            <!-- start: PAGESLIDE RIGHT -->
+            <div id="pageslide-right" class="pageslide slide-fixed inner">
+                <div class="right-wrapper">
+                    
+                    <div class="hidden-xs" id="style_selector">
+                        <div id="style_selector_container">
+                            <div class="pageslide-title">
+                                Page Settings
+                            </div>
+                            <div class="box-title">
+                                Choose Page Layout Style
+                            </div>
+                            <div class="input-box">
+                                <div class="input">
+                                    <select name="layout" class="form-control">
+                                        <option value="default">Wide</option><option value="boxed">Boxed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            {% for cp in companyname %}
+                                <h1>{{cp.company_name}}</h1>
+                                <img src="{{cp.company_logo_url.url}}" alt="{{cp.company_name}}">
+                            {% endfor %}
+                            
+                            <p>{{now}}</p>
+                           
+                        </div>
+                        <div class="style-toggle open"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- end: PAGESLIDE RIGHT -->
+            <!-- start: MAIN CONTAINER -->
+            
+            
+            <div class="main-container inner">
+                
+                    <!-- start: PAGE -->
+                    <div class="main-content">
+                        <!-- start: PANEL CONFIGURATION MODAL FORM -->
+                        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title">Panel Configuration</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Here will be a configuration form
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="button" class="btn btn-primary">
+                                            Save changes
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+                    
+                        <div class="container">
+                            {% block admindashboard %}
+                            <!-- start: PAGE HEADER -->
+                            <!-- start: TOOLBAR -->
+                            {% block coverall %}
+                                <div class="toolbar row">
+                                    <div class="col-sm-6 hidden-xs">
+                                        
+                                        <div class="page-header">
+                                            {% block dataheader %}
+                                                <h1>Hi there</h1>
+                                            {% endblock dataheader %}
+                                        </div>
+                                        
+                                        {% block innercontent %}
+                                            <p>There are ten datasets/records that you will be working with. as shown below
+                                            </p>
+                                            {% for n in companyname %}
+                                                <h3>{{n.company_name}} Data Dashboard</h3>
+                                            {% endfor %}
+                                        {% endblock innercontent %}
+                                    </div>
+                            {% endblock coverall %}
+                            
+                                <div class="col-sm-6 col-xs-12">
+                                    <a href="#" class="back-subviews">
+                                        <i class="fa fa-chevron-left"></i> BACK
+                                    </a>
+                                    <a href="#" class="close-subviews">
+                                        <i class="fa fa-times"></i> CLOSE
+                                    </a>
+                                    <div class="toolbar-tools pull-right">
+                                        <!-- start: TOP NAVIGATION MENU -->
+                                        <ul class="nav navbar-right">
+                                            <!-- start: TO-DO DROPDOWN -->
+                                            {% block blockaction %}
+                                            <li class="dropdown">
+                                                <!--
+                                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                                                    {% if user.is_superuser %}
+                                                        <i class="fa fa-plus"></i>ACTION    
+                                                        <div class="tooltip-notification hide">
+                                                            <div class="tooltip-notification-arrow"></div>
+                                                            <div class="tooltip-notification-inner">
+                                                                <div>
+                                                                    <div class="semi-bold">
+                                                                        HI THERE!
+                                                                    </div>
+                                                                    <div class="message">
+                                                                        For quick data access/action just click here.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </a>
+                                                -->
+                                                <ul class="dropdown-menu dropdown-light dropdown-subview">
+                                                    <li class="dropdown-header">
+                                                        {{dataset_active|title }}
+                                                    </li>
+                                                    {% block viewrecords %}
+                                                        <li>
+                                                            <a href="/uploading/newupload/formater/" class="new-note"><span class="fa-stack"> <i class="fa fa-file-text-o fa-stack-1x fa-lg"></i> <i class="fa fa-plus fa-stack-1x stack-right-bottom text-danger"></i> </span>Upload files</a>
+                                                        </li>
+                                                    {% endblock viewrecords %}
+                                                    
+                                                    {% block updaterecords %}
+                                                        <!--
+                                                        <li>
+                                                            <a href="#readNote" class="read-all-notes"><span class="fa-stack"> <i class="fa fa-file-text-o fa-stack-1x fa-lg"></i> <i class="fa fa-share fa-stack-1x stack-right-bottom text-danger"></i> </span>Update Records</a>
+                                                        </li>
+                                                        -->
+                                                    {% endblock updaterecords %}
+                                                    
+                                                    {% block exportdata %}
+                                                        <li>
+                                                            
+                                                            <a href="#newEvent" class="new-event"><span class="fa-stack"> <i class="fa fa-calendar-o fa-stack-1x fa-lg"></i> <i class="fa fa-plus fa-stack-1x stack-right-bottom text-danger"></i> </span>Export Records</a>
+                                                        </li>
+                                                    {% endblock exportdata %}
+                                                    
+                                                </ul>
+                                            </li>
+                                            
+                                            
+                                            {% endblock blockaction %}
+                                            
+                                            {% block searchforms %}
+                                                
+                                            {% endblock searchforms %}
+                                        </ul>
+                                        <!-- end: TOP NAVIGATION MENU -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end: TOOLBAR -->
+                            
+                            
+                            <!-- start: PAGE CONTENT -->
+                            <div class="row">
+                                <!--<div class="col-md-6 col-lg-3 col-sm-6">-->
+                                
+                                {% block maincontent %}
+                               
+                                <div class="row">
+                                    <div class="custom">
+                                    <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-bar-chart-o fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{pi.get_full_name|title}}</b></h3>
+                                                <span class="subtitle">Available Records amount to <code><b>{{piinfo}}</b></code></span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            <div class=""></div>
+                                            
+                                            <a href="{{pi.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records to {{pi.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="/view/dataview/request/{{pi.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{pi.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                <div class="custom">
+                                <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-code fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{ib.get_full_name|title}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{ibpath}}</b></code></span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            
+                                            <a href="{{ib.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add Content tp {{ib.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{ib.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{ib.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="custom">
+                                    <div class="col-md-6 col-lg-3 col-sm-6">
+                                        <div class="panel panel-default panel-white core-box">
+                                            <div class="panel-tools">
+                                                <a href="#" class="btn btn-xs btn-link panel-close">
+                                                   <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                            
+                                            <div class="panel-body no-padding">
+                                                <div class="col-xs-4 padding-10 text-center text-white tooltips partition-azure padding-20 text-center core-icon">
+                                                    <!--<i class="fa fa-desktop fa-2x icon-big"></i>-->
+                                                </div>
+                                                                            
+                                                <div class="padding-20 core-content">
+                                                    
+                                                    <h3 class="title block no-margin"><b>{{cba.get_full_name}}</b></h3>
+                                                    <span class="subtitle"> Available Records now amount to <code><b>{{cbapath}}</b></code></span>
+                                                    
+                                                </div>
+                                            </div>
+                                                                        
+                                            <div class="panel-footer clearfix no-padding">
+                                                
+                                                <a href="{{cba.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add Content to {{cba.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                                <a href="{{cba.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{cba.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!---following column---->
+                                <div class="custom">
+                                        <div class="col-md-6 col-lg-3 col-sm-6">
+                                        <div class="panel panel-default panel-white core-box">
+                                            <div class="panel-tools">
+                                                <a href="#" class="btn btn-xs btn-link panel-close">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-shopping-cart fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{cap.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to {{cappath}}</span>
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="panel-footer clearfix no-padding">
+                                            
+                                            <a href="{{cap.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add Content to {{cap.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{cap.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{cap.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                            <!--<a href="#" class="col-xs-4 padding-10 text-center text-white tooltips partition-red" data-toggle="tooltip" data-placement="top" title="View More"><i class="fa fa-chevron-right"></i></a>-->
+                                        </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="row">
+                        <div class="custom">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-bar-chart-o fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{bc.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{bcpath}}</b></code></span>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            <div class="">r</div>
+                                           
+                                            <a href="{{bc.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Record...to {{bc.get_full_name}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{bc.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{bc.get_full_name}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        
+                        <div class="custom">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-code fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{pis.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{pispath}} </b></code></span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                          
+                                            <a href="{{pis.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records...{{pis.get_full_name|title}} "><i class="fa fa-plus"></i></a>
+                                            <a href="{{pis.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{pis.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    
+                    <!---another row--->
+                    <div class="row">
+                        <div class="custom">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-desktop fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{cmc.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{cmcpath}}</b></code></span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            
+                                            <a href="{{cmc.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records {{cmc.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{cmc.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{cmc.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                        <div class="custom">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-shopping-cart fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{ccg.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{ccgpath}}</b></code></span>
+                                                
+                                                   
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            
+                                            <a href="{{ccg.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records to {{ccg.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{ccg.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{ccg.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="custom">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-desktop fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{fmd.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{cmcpath}}</b></code></span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            
+                                            <a href="{{fmd.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records to {{fmd.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{fmd.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{fmd.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                        <div class="custom">
+                            <div class="col-md-6 col-lg-3 col-sm-6">
+                                    <div class="panel panel-default panel-white core-box">
+                                        <div class="panel-tools">
+                                            <a href="#" class="btn btn-xs btn-link panel-close">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <div class="partition-azure padding-20 text-center core-icon">
+                                                <!--<i class="fa fa-desktop fa-2x icon-big"></i>-->
+                                            </div>
+                                            <div class="padding-20 core-content">
+                                                
+                                                <h3 class="title block no-margin"><b>{{bs.get_full_name}}</b></h3>
+                                                <span class="subtitle">Available Records now amount to <code><b>{{bspath}}</b></code></span>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer clearfix no-padding">
+                                            
+                                            <a href="{{bs.get_new_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="Add New Records to {{bs.get_full_name|title}}"><i class="fa fa-plus"></i></a>
+                                            <a href="{{bs.get_view_path}}" class="col-xs-4 padding-10 text-center text-white tooltips partition-blue" data-toggle="tooltip" data-placement="top" title="View More Records of {{bs.get_full_name|title}}"><i class="fa fa-chevron-right"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                            {% endblock maincontent %}
+                                    
+                                <!--</div>-->
+                            </div>
+                            
+                {% endblock admindashboard %}
+                            <!-- end: PAGE CONTENT-->
+                        </div>
+                        <div class="subviews">
+                            <div class="subviews-containers">
+                                {% block subview %}
+                                    <form role="form" class="form-horizontal" method="post" action="/submission/requesting/information/searching/">
+                                            
+                                    </form>
+                                {% endblock subview %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: PAGE -->
+                
+            </div>
+            
+            <!-- end: MAIN CONTAINER -->
+            <!-- start: FOOTER -->
+            <footer class="inner">
+                <div class="footer-inner">
+                    <div class="pull-left">
+                        {% for cp in companyname %}
+                            <p>2014 &copy; {{cp.company_name}} All rights reserved.</p>
+                        {% endfor %}
+                    </div>
+                    <div class="pull-right">
+                        <span class="go-top"><i class="fa fa-chevron-up"></i></span>
+                    </div>
+                </div>
+            </footer>
+            <!-- end: FOOTER -->
+            <!-- start: SUBVIEW SAMPLE CONTENTS -->
+            <!-- *** NEW NOTE *** -->
+            <div id="newNote">
+                <div class="noteWrap col-md-8 col-md-offset-2">
+                    <h3>Add new note</h3>
+                    <form class="form-note">
+                        <div class="form-group">
+                            <input class="note-title form-control" name="noteTitle" type="text" placeholder="Note Title...">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="noteEditor" name="noteEditor" class="hide"></textarea>
+                            <textarea class="summernote" placeholder="Write note here..."></textarea>
+                        </div>
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-info close-subview-button">
+                                    Close
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-info save-note" type="submit">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+         
+        </div>
+   {% endblock generalblock %}
+        <!-- start: MAIN JAVASCRIPTS -->
+        <!--[if lt IE 9]>
+        <script src="assets/plugins/respond.min.js"></script>
+        <script src="assets/plugins/excanvas.min.js"></script>
+        <script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js"></script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jQuery/jquery-2.1.1.min.js"%}"></script>
+        <!--<![endif]-->
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap/js/bootstrap.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/blockUI/jquery.blockUI.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/iCheck/jquery.icheck.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/moment/min/moment.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootbox/bootbox.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery.scrollTo/jquery.scrollTo.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery.appear/jquery.appear.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery-cookie/jquery.cookie.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/velocity/jquery.velocity.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/TouchSwipe/jquery.touchSwipe.min.js"%}"></script>
+        <!-- end: MAIN JAVASCRIPTS -->
+        <!-- start: JAVASCRIPTS REQUIRED FOR SUBVIEW CONTENTS -->
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery-mockjax/jquery.mockjax.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/toastr/toastr.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-modal/js/bootstrap-modal.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-modal/js/bootstrap-modalmanager.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-switch/dist/js/bootstrap-switch.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-select/bootstrap-select.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/DataTables/media/js/jquery.dataTables.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/DataTables/media/js/DT_bootstrap.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/truncate/jquery.truncate.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/summernote/dist/summernote.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/js/subview.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/js/subview-examples.js"%}"></script>
+        <!-- end: JAVASCRIPTS REQUIRED FOR SUBVIEW CONTENTS -->
+        <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/nvd3/lib/d3.v3.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/nvd3/nv.d3.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/nvd3/src/models/historicalBar.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/nvd3/src/models/historicalBarChart.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/nvd3/src/models/stackedArea.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/nvd3/src/models/stackedAreaChart.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/jquery.sparkline/jquery.sparkline.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/plugins/easy-pie-chart/dist/jquery.easypiechart.min.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/assets/js/index.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/brythonscripts/postselect.js"%}"> </script>
+        <script src="{% static "/static/datasetrecords/static/brythonscripts/handlevalidation.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/brythonscripts/handleimport.js"%}"></script>
+        <script src="{% static "/static/datasetrecords/static/brythonscripts/importrecords.js"%}"></script>
+
+
+        <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+        <!-- start: CORE JAVASCRIPTS  -->
+        <script src="{% static "/static/datasetrecords/static/assets/js/main.js"%}"></script>
+        <!-- end: CORE JAVASCRIPTS  -->
+        <script>
+            jQuery(document).ready(function() {
+                Main.init();
+                SVExamples.init();
+                Index.init();
+            });
+        </script>
+      
+    </body>
+    {% endblock bodyconver %}
+    <!-- end: BODY -->
+</html>

@@ -1,0 +1,215 @@
+{% extends "admindashboard.html" %}
+    {% load my_custom_tags %}
+    {% block title %}
+    {{ block.super }} - {{datasetview|title|purge_underscore}}
+    {% endblock title %}
+    
+    <!--block for updating records -->
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block viewrecords %}
+    
+    {% endblock viewrecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    
+    {% block searchforms %}
+        <!--
+        <li class="menu-search">
+            <a href="#">
+                <i class="fa fa-search"></i> SEARCH
+            </a>
+            
+            <div class="popover bottom search-box transition-all">
+                <div class="arrow"></div>
+            <div class="popover-content">
+                <form class="" id="searchform" action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-main-color btn-squared" type="button">
+                            <i class="fa fa-search"></i>
+                        </button> </span>
+                    </div>
+                </form>
+            -->
+            <!-- end: SEARCH FORM -->
+            </div>
+            
+            </div>
+            <!-- end: SEARCH POPOVER -->
+        </li>
+    {% endblock searchforms %}
+    
+    {% block dataheader %}
+        <h1>{{who|title|purge_underscore}}<small>Currently there are <b><code>{{ datacount }}</code></b> records in {{who|title|purge_underscore}}</small></h1>
+    {% endblock dataheader %}
+    
+    <!--Override the welcome superuser message-->
+    {% block overridemsg %}
+        <div class="space20">
+            {% if viewerror %}
+                <p>System Error during data view</p>
+                <p>{{viewerror}}</p>
+            {% else %}
+                <div class="btn-group">
+                    <button class="btn btn-light-grey btn-sm dropdown-toggle" data-toggle="dropdown">
+                        Select Action on {{who|title|purge_underscore}} <span class="caret"></span>
+                    </button>
+                    {% if user.is_superuser %}
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="dropdown-header" role="presentation">
+                            Action on validation 
+                        </li>
+                        <li>
+                            <a href="/importdata/firstvalidate/{{who}}/" id="exportrecordss">
+                                Validate {{who|title|purge_underscore}} and export records
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/importdata/validatesave/{{who}}/" id="exportrecords2s">
+                                Validate {{who|title|purge_underscore}} and save records
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header" role="presentation">
+                            Report on Previous Validations
+                        </li>
+                        <li>
+                            <a href="/validation/recentvalidation/successful/">
+                                Get Validation Reports
+                            </a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul role="menu" class="dropdown-menu">
+                        <li class="dropdown-header" role="presentation">
+                            You are unauthorized to perform this actions 
+                        </li>
+                    </ul>
+                {% endif %}
+                </div>
+                
+                <div class="btn-group">
+                    <!--
+                    <div data-provides="fileupload" class="fileupload fileupload-new removebottom">
+                          <input type="hidden" value="" name="">
+                                <span class="btn btn-file btn-light-grey"><i class="fa fa-folder-open-o">
+                                </i> <span class="fileupload-new">Import Records into {{who|title|purge_underscore}}</span>
+                                <span class="fileupload-exists">Import</span>
+                            <input type="file" name="">
+                            </span>
+                            <span class="fileupload-preview"></span>
+                            <a data-dismiss="fileupload" class="close fileupload-exists float-none" href="#">
+                                ×
+                            </a>
+                    </div>
+                    -->
+                </div>
+                
+                <div class="btn-group">
+                    <a class="btn btn-grey pull-right" href="/app/process/datasetrecord/{{who}}/"><i class="fa fa-plus"></i> New Record</a>
+                </div>
+                
+                <div class="btn-group">
+                    <a class="btn btn-grey pull-right" href="/importdata/showsaved/andvalidated/">
+                    Validated Saved Records</a>
+                </div>
+            {% endif %}
+        </div>
+        <!--
+        <label>
+            <input type="text" aria-controls="sample_1" class="form-control input-sm add-width" placeholder="Search">
+        </label>
+        -->
+    {% endblock overridemsg %}
+    <!--ending the overriding method above-->
+    
+    {% block extendsuserbase %}
+            <form role="form" class="form-horizontal" method="post" action="/submission/permanentpurging/deleting/{{who}}/">
+                <!--<input type="text" aria-controls="sample_1" class="form-control input-sm padding-r add-width" placeholder="Search">-->
+
+                {% csrf_token %} 
+                
+                {% if deletemode %}
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-green pull-rights" name ="submits">
+                            Delete Selected Records <i class="fa fa-sarrow-circle-right"></i>
+                        </button>
+                    </div>
+                {% endif %}
+                
+                <table class="table table-striped table-bordered table-hover table-full-width" id="creditstarttable">
+                        
+                        <thead>
+                            <tr role="row">
+                                {% if deletemode %}
+                                    <th class="centers">
+                                        <div class="checkbox-tables">
+                                            <input type="checkbox" class="flat-grey selectall">
+                                        </div>
+                                    </th>
+                                {% endif %}
+                                {% for instance in modelfields %}
+                                    {% if instance|title == "Id" %}
+                                        {% if user.is_superuser %}
+                                            <th class="hidden-xs reducesize there-size">Action</th>
+                                        {% endif %}
+                                    {% else %}
+                                        <th class="reducesize there-size">{{instance|title|purge_underscore}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                                
+                               
+                            </tr>
+                        </thead>
+                                            
+                        <tbody>
+                            
+                            
+                        {% for data in availabledata %}
+                            <tr>
+                                {% if deletemode %}
+                                    <td class="center">
+                                        <div class="checkbox-tables">
+                                            <input type="checkbox" class="flat-grey foocheck" name="{{data.id}}">
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                    {%  if user.is_superuser %}
+                                        <td class="dataid"><a href="/data/updating/indentification/{{who}}/{{who}}/{{data.id}}/">Edit</a></td>
+                                    {% endif %}
+                                    <td>{{data.Institution_Type }}</td>
+                                    <td>{{data.Institution_Name }}</td>
+                                    <td>{{data.License_Issuing_Date }}</td>
+                                    <!--
+                                    <td>{{data.pci}}</td>
+                                    <td>{{data.sci}}</td>
+                                    -->
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+     
+        <div class="pagination">
+                    <span class="step-links">
+                    {% if nextpage.has_previous %}
+                        <a href="?page={{ nextpage.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ nextpage.number }} of {{ nextpage.paginator.num_pages }}
+                    </span>
+
+                    {% if nextpage.has_next %}
+                        <a href="?page={{ nextpage.next_page_number }}">Next</a>
+                    {% endif %}
+                    </span>
+            </div>
+    {% endblock %}

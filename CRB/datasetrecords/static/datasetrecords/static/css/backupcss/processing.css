@@ -1,0 +1,172 @@
+#dataprocessingview{
+    background-color:#F0F0F0;
+    height:100%;
+    width:100%;
+}
+
+#dataprocessingview select{
+    background-color:;
+    padding-left:20px;
+    margin-left:20px;
+    border:2px solid #999999;
+}
+#processing{
+	margin-right: 20px;
+	margin-top: 0px;
+	margin-left: 30px;
+	width: 210px;
+	height: 30px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align:center;
+	color: #fff;
+	background-color: #acd6ef; /*IE fallback*/
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+	background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+	background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+	border-radius: 1px;
+	border: 1px solid #66add6;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+	cursor: pointer;
+}
+
+#processing:hover {
+/*#submit:hover{*/
+    background-color: #acd6ef; /*IE fallback*/
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#acd6ef));
+	background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #acd6ef 100%);
+	background-image: linear-gradient(top left 90deg, #b6e2ff 0%, #acd6ef 100%);
+}
+
+#dataprocessingview select{
+    color: #777;
+	padding-left: 10px;
+	margin: 10px;
+	margin-top: 12px;
+	margin-left: 18px;
+	width: 290px;
+	height: 35px;
+	border: 1px solid #c7d0d2;
+	font-size:19px;
+}
+
+#dataprocessingview input{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 17px;
+    outline: none;
+}
+
+#dataprocessingview input[type=text]{
+	color: #777;
+	padding-left: 10px;
+	margin-topa: 1px;
+	margin-top: 18px;
+	margin-left: 18px;
+	width: 290px;
+	height: 35px;
+	border: 1px solid #c7d0d2;
+}
+
+#dataprocessingview select option:hover {
+/*#submit:hover{*/
+   background:#6EC2E8;
+  cursor: pointer
+}
+
+
+#dataprocessingview label{
+	color: #000000;
+	font-weight:bolder;
+	display: inline-block;
+	margin-left: 18px;
+	padding-top: 10px;
+	font-size: 18px;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#dataprocessingview .filenamelabel{
+    margin-top:8
+}
+
+
+#dataprocessingview .headerlabel{
+    width: 350px;
+    float:left;
+    clear:both;
+    margin-top:px;
+}
+
+#dataprocessingview .djangoforms{
+	background-color:;
+	padding-left: 1px;
+	padding-right:1px;
+	margin:0px 0px 0px 0px;
+	border-bottom:2px solid #B8D30B;
+}
+
+#dataprocessingview .djangoforms label{
+    font-size:14px;
+    color: #000;
+	font-weight:bolder;
+	margin-left: px;
+	padding-top: 10px;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#dataprocessingview .djangoforms input,  .djangoforms select{
+	width: 290px;
+	padding-left:px;
+	margin: px;
+	margin-top: 2px;
+	margin-bottom:2px;
+	margin-left: 1px;
+	height: 30px;
+}
+#dataprocessingview .djangoforms select{
+    color: #777;
+	padding-left: 10px;
+	margin: 0px;
+	margin-top: 12px;
+	margin-bottom: 5px;
+	width: 290px;
+	height: 35px;
+	border: 1px solid #c7d0d2;
+}
+
+#dataprocessingview .djangoforms input#id_header{
+    width:45px;
+}
+
+#dataprocessingview .headerforms{
+	border:0px dotted #6EC2E8;
+}
+
+#dataprocessingview .previewpane{
+    background-color:#2A779A;
+}
+
+#dataprocessingview .notifyuser{
+	background-color:#2A779A;
+}
+#dataprocessingview .previewpane p{
+	font-size:19px;
+	margin-left: 18px;
+	font-weight:bolder;
+	color: #fff;
+	padding: 0.35em 0px 0.39em 35px;
+	background-image: url('cssimages/important.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+#dataprocessingview .notifyuser p{
+	font-size:19px;
+	margin-left: 18px;
+	font-weight:bolder;
+	margin-top: 48px;
+	color:#fff;
+	padding: 0.39em 0px 0.99em 35px;
+	background-image: url('cssimages/information1.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+}

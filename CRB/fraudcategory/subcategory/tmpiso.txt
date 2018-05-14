@@ -1,0 +1,51 @@
+                    
+                    
+                     
+                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    ('Taiwan' ,'TW'),
+                    ('Tajikistan' ,'TJ'),
+                    ('Tanzania' ,'TZ'),
+                    ('Thailand' ,'TH'),
+                    ('Timor-Leste' ,'TL'),
+                    ('Togo' ,'TG'),
+                    ('Tokelau' ,'TK'),
+                    ('Tonga' ,'TO'),
+                    ('Trinidad and Tobago' ,'TT'),
+                    ('Tunisia' ,'TN'),
+                    ('Turkey' ,'TR'),
+                    ('Turkmenistan' ,'TM'),
+                    ('Turks and Caicos Islands' ,'TC'),
+                    ('Tuvalu' ,'TV'),
+                    ('Uganda' ,'UG'),
+                    ('Ukraine ','UA'),
+                    ('United Arab Emirates' ,'AE'),
+                    ('United Kingdom' ,'GB'),
+                    ('United States' ,'US'),
+                    ('Uruguay' ,'UY'),
+                    ('US Virgin Islands' ,'VI'),
+                    ('Uzbekistan' ,'UZ'),
+                    ('Vanuatu' ,'VU'),
+                    ('Venezuela' ,'VE'),
+                    ('Vietnam' ,'VN'),
+                    ('Wallis and Futuna' ,'WF'),
+                    ('Western Sahara' ,'EH'),
+                    ('Yemen' ,'YE'),
+                    ('Zambia' ,'ZM'),
+                    ('Zimbabwe' ,'ZW'),

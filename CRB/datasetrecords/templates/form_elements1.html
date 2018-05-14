@@ -1,0 +1,108 @@
+{% extends "dashboard.html" %}
+
+    <!--block for the title-->
+    {% block title %}
+    {{ block.super }} - {{datasetinput|title}}
+    {% endblock title %}
+    <!--ending the bock for the title -->
+    
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    {% block dataheader %}
+        <h1><b>{{who|title}}</b> <small><code><b>Dataset reference</b></code> or <code><b>Data ref</b></code> below, should correspond to the above</small></h1>
+    {% endblock dataheader %}
+    
+    {% block subview %}
+   
+    {% endblock subview %}
+
+    
+    {% block maincontent %}
+        <script Language="JavaScript" type="text/javascript">
+            function open_new_window(url, width, height){
+                var new_window  = window.open(url, "_black", "toolbar=yes, scrollbars=1 resizable=yes, top=500, left=500, width=1200, height=900");
+            }
+            
+            
+            function reload_fromserver(){
+                location.reload(true);
+            }
+        </script>
+                {% load my_custom_tags %}
+                
+                <style type="text/css" rel="stylesheet">
+                    ul.errorlist {
+                        color:#000;
+                        
+                    }
+                    
+                    p.errorsfound {
+                        margin-left:20px;
+                        font-weight:bold;
+                        font-size:18px;
+                    }
+                </style>
+                <div class="panel panel-whites">
+                    {% if invaliderrors  %}
+                        <p class="errorsfound">The following Errors where found in your forms.</p>
+                            {% for field, errors  in invaliderrors.errors.items %}
+                                    <h4 style="color:red; font-weight:bold;
+                                               margin-left:20px; text-transform:capitlize;">{{field}}:</h4> 
+                                    {{errors}}
+                            {% endfor %}
+                    {% endif %}
+                    
+                    <div class="panel-body">
+                            <form role="form" class="form-horizontal" method="post" action="/insert/data/entered/{{dataset_active}}/">
+                                    {% csrf_token %}
+                                    {{ formset.management_form }}
+                                    {% for form in forms %}
+                                        <div class="form-group has-success">
+                                            <label class="col-sm-2 control-label" for="form-field-3" >
+                                                {{form.label_tag}}
+                                            </label>
+                                            
+                                            <div class="col-sm-9">
+                                                
+                                                {% if form.field.widget|is_selectbox == True %}
+                                                    {{form}}<a href="#" onclick="return open_new_window('/add{{form.label_tag|get_labeltag}}', 500,500);">Add <i class="fa  fa-plus fa-lg"></i></a>
+                                                    
+                                                {% else %}
+                                                    {{form}}
+                                                {% endif %}
+                                             
+                                            </div>
+                                            
+                                        </div>
+                                    {% endfor %}
+                                    
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-green pull-right" name ="submits">
+                                        Submit <i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+                                    
+                                    <button type="submit" class="btn btn-green pull-right" name="submitviews">
+                                        Submit And view <i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+                                </div>
+                                    
+                            </form>
+                    </div>
+                    
+                </div>
+                        
+                        
+        
+    {% endblock maincontent %}
+    
+    

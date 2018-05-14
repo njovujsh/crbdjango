@@ -1,0 +1,542 @@
+{% extends "dashboard.html" %}
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block admindashboard %}
+    
+    {% block subview %}
+    
+    {% endblock subview %}
+    
+    <!--Load our custom template filters
+    --->
+    {% load my_custom_tags %}
+        <div id="horizontal-menu-spoiled" class="navbars navbar-inverse hidden-sms hidden-xs inner">
+            <div class="container">
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/home/dashboard/">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        {% if user %}
+                            <li class="dropdown ">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                     
+                                    <i class="fa fa-cog fa-fw"></i>
+                                    Data DSS<i class="icon-arrow"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">
+                                        Data Submission Specifications
+                                    </li>
+                                   
+                                    <li class="active">
+                                        <a href="/dssh/updating/dss/">
+                                            Update Required Specifications
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/addnew/dssh/">
+                                            Add data submissions Headers
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/dssh/view/dsshe/">
+                                            View data submissions Headers
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        
+                        
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                                <i class="fa fa-database"></i>
+                                Processing & Download<i class="icon-arrow"></i>
+                            </a>
+                           
+                            <ul class="dropdown-menu">
+                                {% if user.is_superuser %}
+                                    <li>
+                                        <a href="/processing/data/existing/">
+                                            <i class="fa fa-desktop"></i>
+                                            <span class="title">Process Records</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    {% if staff.can_process_data %}
+                                        <li>
+                                            <a href="/processing/data/existing/">
+                                                <i class="fa fa-desktop"></i>
+                                                <span class="title">Process Records</span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="dropdown-header">
+                                            Looks like you are not authorized to process data.
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                                <!--
+                                <li>
+                                    <a href="/file/display/success/url/upload/">
+                                        <i class="fa fa-arrows-alt"></i>
+                                        <span class="title">View Uploaded Files</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/file/uploading/newupload/formater/">
+                                        <i class="fa fa-cloud-upload "></i>
+                                        <span class="title">Upload Files for processing</span>
+                                    </a>
+                                </li>
+                                -->
+                                <!--
+                                <li>
+                                    <a href="table_export.html">
+                                        <span class="title">Table Export</span>
+                                    </a>
+                                </li>
+                                -->
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="dropdown">
+                            
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="fa fa-rebel"></i>
+                                Validate & File Report <i class="icon-arrow"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if user.is_superuser %}
+                                    <li class="dropdown-header">
+                                        <!--
+                                        <a href="/validation/datavalidation/rules/">
+                                            <span class="title">Validation Rules</span>
+                                        </a>
+                                        -->
+                                    </li>
+
+                                    <li>
+                                        <a href="/validation/beginvalidation/validatedata/">
+                                            <span class="title">Begin Data Validation</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/validation/recentvalidation/successful/">
+                                            <span class="title">Successful Validation</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="/validation/recentfailure/unsuccessful/">
+                                            <!--<span class="title">Failed Validation</span>-->
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="dropdown-header">
+                                        You don't have validation previledges.
+                                    </li>
+                                {% endif %}
+                                
+                            </ul>
+                            
+                        </li>
+
+                        <li class="dropdown">
+                            
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                               <i class="fa fa-search"></i>
+                                Graphs & Detailed Reportings<i class="icon-arrow"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if user.is_superuser %}
+                                    <li class="dropdown-header">
+                                        Select Records Below to View a details report of.
+                                    </li>
+                                    {% for record in datasetrecords %}
+                                        <li>
+                                            <a href="/record/searching/{{record.slug}}/">
+                                                <span class="title">{{record.dataset|purge_underscore|putspaces}}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <span class="title"></span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="dropdown-header">
+                                        Your are Unauthorized to view detailed reports
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            
+                        </li>
+
+                        
+                        <li class="dropdown">
+                            
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="fa fa-user"></i>
+                                User Account <i class="icon-arrow"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% if user.is_superuser %}
+                                    <li>
+                                        <a href="/user/new/userstaff/">
+                                            <span class="title"> Add New Staffs </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/user/view/existingstaff/">
+                                            <span class="title">View EnrolledStaffs</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="dropdown-header">
+                                       Only administrative users can add, update and view users.
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            
+                        </li>
+                        
+                        
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                               <i class="fa fa-child"></i>
+                                Help<i class="icon-arrow"></i>
+                            </a>
+                            
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/help/usermanual/">
+                                        <span class="title">General System Usage</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <!--
+                                    <a href="/help/maintainers/">
+                                        <span class="title">Contact Maintainers</span>
+                                    </a>
+                                    -->
+                                </li>
+                            </ul>
+                            
+                        </li>
+                    </ul>
+                </div>
+                        <!--/.nav-collapse -->
+            </div>
+        </div>
+        
+        <div class="panel panel-white">
+            {% block allpanelheaders %}
+                <div class="panel-heading border-light">
+                    {% block newrules %}
+                    <h1 class="panel-title">
+                        {% block overridemsg %}
+                            <!--
+                            Welcome <b>{{user.username}}</b> your are logged in as 
+                            <span class="text-bold">Superuser</span>
+                            -->
+                        {% endblock overridemsg %}
+                    </h1>
+                    {% endblock newrules %}
+                </div>
+            {% endblock allpanelheaders %}
+            
+            <div class="panel-body">
+                {% block extendsuserbase %}
+                    <div class="row">
+                        <!--first column-->
+                        <div class="col-md-6">
+                            <div class="panel panel-white">
+                                <div class="panel-heading border-light">
+                                    <h4 class="panel-title">Sys<span class="text-bold"> Settings</span> Data Submission Protocols and Loggings</h4>
+                                    <h1 style="color:green; font-size:16px !important;">{{successtitle}}</h1>
+                                </div>
+                                {% if sftp_errors %}
+                                    <p style="color:red">Errors where found in the scp_protocols please check the Secure SFTP Tab for more details.</p>
+                                {% endif %}
+                                
+                                <div class="tabbable partition-dark">
+                                    <ul id="myTab6" class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#myTab6_example12" data-toggle="tab">Email</a>
+                                        </li>
+                                        
+                                        <li>
+                                            <a href="#myTab6_example22" data-toggle="tab">Secure SFTP/SCP</a>
+                                        </li>
+                                        <!--
+                                        <li>
+                                            <a href="#myTab6_example32" data-toggle="tab">HTTPS</a>
+                                        </li>
+                                        -->
+                                        <li>
+                                            <a href="#myTab6_example42" data-toggle="tab">System Logging</a>
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="myTab6_example12">
+                                            
+                                            {% if errors %}
+                                                <p>Please check the following errors.</p>
+                                                <p style="color:red;">{{errors}}</p>
+                                            {% endif %}
+                                            {% block successfulsending %}
+                                                <form role="form" class="form-horizontal" method="post" action="/sendmail/sendingemail/newmail/" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    {{formset.management_form}}
+                                                    {% for code in emailform %}
+                                                        <div class="form-group has-success">
+                                                            <label class="col-sm-2 control-label adjusts" for="form-field-3" >
+                                                                {{code.label_tag}}
+                                                            </label>
+
+                                                            <div class="col-sm-s9 adjust-lefts">
+                                                                {{ code }}
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+
+                                                    {% if emailform %}
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-green" name ="submits">
+                                                                Send Email<i class="fa fa-email"></i>
+                                                            </button>
+                                                        </div>
+                                                    {% endif %}
+                                                    <p></p>
+                                                </form>
+                                            {% endblock successfulsending %}
+                                        </div>
+                      
+                                        <div class="tab-pane fade" id="myTab6_example22">
+                                            {% if sftp_errors %}
+                                                <p>Please check the following errors.</p>
+                                                {% if errorargs %}
+                                                    <p style="color:red;">{{sftp_errors.args}}</p>
+                                                    <p style="color:red;">{{sftp_errors.message}}</p>
+                                                {% else %}
+                                                    <p style="color:red;">{{sftp_errors}}</p>
+                                                {% endif %}
+                                            {% endif %}
+                                            
+                                            {% block sendsftp_successful %}
+                                                <form role="form" class="form-horizontal" method="post" action="/sendmail/sftpsendmail/sftp/" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    {{formset.management_form}}
+                                                    {% for code in sftp_forms %}
+                                                        <div class="form-group has-success">
+                                                            <label class="col-sm-2 control-label adjusts" for="form-field-3" >
+                                                                {{code.label_tag}}
+                                                            </label>
+
+                                                            <div class="col-sm-s9 adjust-lefts">
+                                                                {{ code }}
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+
+                                                    {% if sftp_forms %}
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-green" name ="submits">
+                                                                Upload To Remote Host<i class="fa email"></i>
+                                                            </button>
+                                                        </div>
+                                                    {% endif %}
+                                                    
+                                                    <p></p>
+                                                </form>
+                                            {% endblock sendsftp_successful %}
+                                        </div>
+                                    
+                                        <div class="tab-pane fade" id="myTab6_example32">
+                                            <p>Missing libhttp</p>
+                                            <!--<p>Support for this protocol will be released in next version.</p>-->
+                                        </div>
+                                    
+                                        <div class="tab-pane fade" id="myTab6_example42">
+                                            <h1>Auto Enabled</h1>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <!--second column-->
+                        <div class="col-md-6">
+                            <div class="panel panel-white">
+                                <div class="panel-heading border-light">
+                                    <h4 class="panel-title">Operational Admin<span class="text-bold"> Interface</span></h4>
+                                    {% if settingserrors %}
+                                        <p style="margin-left:10px; color:red;">Errors where detected on your form.</p>
+                                        <p style="maring-left:10px; color:red;">{{settingserrors}}</p>
+                                    {% endif %}
+                                    
+                                    {% if successfulsettings %}
+                                        <p style="margin-left:10px; color:green; margin-top:10px;">{{successfulsettings}}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="tabbable partition-dark">
+                                    <ul id="myTab6" class="nav nav-tabs ">
+                                        <li class="active ">
+                                            <a href="#myTab6_example122" data-toggle="tab">Other Admin Interface</a>
+                                        </li>
+                                        
+                                        <li>
+                                            <!--<a href="#myTab6_example55" data-toggle="tab">Default Settings</a>-->
+                                        </li>
+                                        <li>
+                                            <a href="#myTab6_example66" data-toggle="tab">PI Details</a>
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="myTab6_example122">
+                                            <p>This admin interface is only for advanced operations only.</p>
+                                            <!--
+                                            <form role="form" class="form-horizontal" method="post" action="/user/addnew/dssh/">
+                                                {% csrf_token %}
+                                                {{formset.management_form}}
+                                                
+                                                {% for code in codeform %}
+                                                    <div class="form-group has-success">
+                                                        <label class="col-sm-2 control-label adjustss" for="form-field-3" >
+                                                            {{code.label_tag}}
+                                                        </label>
+
+                                                        <div class="col-sm-9 adjust-left">
+                                                            {{ code }}
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                                
+                                                <div class="form-actions">
+                                                    <button type="submit" class="btn btn-green" name ="submits">
+                                                        Set Branch Code<i class="fa email"></i>
+                                                    </button>
+                                                </div>
+                                                -->
+                                                <style type="text/css">
+                                                    a.btn{
+                                                        margin-left:20px;
+                                                    }
+                                                </style>
+                                                <a href="/admin/" class="btn btn-red">Login in root Interface</a>
+                                                <p></p>
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="myTab6_example55">
+                                            <p style="marin-left:10px;"  class="btn-red" >The Systems relies heavily on this settings.</p>
+                                            {% if headersettingsnew %}
+                                                <form role="form" class="form-horizontal" method="post" action="/branch/settingsheaders/">
+                                                    {% csrf_token %}
+                                                    {{formset.management_form}}
+                                                        {% for hsettings in headersettings %}
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{hsettings.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9 adjust-left">
+                                                                    {{ hsettings }}
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    
+                                                        <p></p>
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-green" name ="submits">
+                                                                Set Default Header<i class="fa email"></i>
+                                                            </button>
+                                                        </div>
+                                                        <p></p>
+                                                        <p></p>
+                                                </form>
+                                            
+                                            {% else %}
+                                                <form role="form" class="form-horizontal" method="post" action="/branch/settingsheaderss/update/{{hset}}/">
+                                                    {% csrf_token %}
+                                                    {{formset.management_form}}
+                                                    {% for hsettings in headersettings %}
+                                                        <div class="form-group has-success">
+                                                            <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                {{hsettings.label_tag}}
+                                                            </label>
+                                                            <div class="col-sm-9 adjust-left" id="form-header-setting">
+                                                                {{ hsettings }}
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                
+                                                    <p></p>
+                                                    {% if user.is_superuser %}
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-red" name ="submits">
+                                                                Update Default Submission Header<i class="fa email"></i>
+                                                            </button>
+                                                        </div>
+                                                        <p></p>
+                                                        <p></p>
+                                                    {% endif %}
+                                                </form>
+                                            {% endif %}
+                                            
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="myTab6_example66">
+                                            <form role="form" class="form-horizontal" method="post" action="/branch/pisettings/saving/">
+                                                    {% csrf_token %}
+                                                    {{formset.management_form}}
+                                                    {% for pi in piforms %}
+                                                        <div class="form-group has-success">
+                                                            <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                {{pi.label_tag}}
+                                                            </label>
+                                                            <div class="col-sm-9 adjust-left" id="form-header-setting">
+                                                                {{ pi }}
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                
+                                                    <p></p>
+                                                    {% if user.is_superuser %}
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-green" name ="submits">
+                                                                Save PI Details <i class="fa email"></i>
+                                                            </button>
+                                                        </div>
+                                                        <p></p>
+                                                        <p></p>
+                                                    {% endif %}
+                                                </form>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                {% endblock extendsuserbase %}
+            </div>
+        </div>
+    {% endblock admindashboard %}

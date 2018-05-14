@@ -1,0 +1,1725 @@
+{% extends "admindashboard.html" %}
+
+    {% load my_custom_tags %}
+    <!--block for the title-->
+    {% block title %}
+    {{ block.super }} - {{datasetupdate|title}}{{who|title}}
+    {% endblock title %}
+    <!--ending the bock for the title -->
+
+    {% block exportdata %}
+
+    {% endblock exportdata %}
+
+    {% block updaterecords %}
+
+    {% endblock updaterecords %}
+
+    {% block innercontent %}
+
+    {% endblock innercontent %}
+
+    {% block dataheader %}
+        <h1><b>{{who|title}}</b> <small><code><b>Dataset reference</b></code> or <code><b>Data ref</b></code> below, should correspond to the above</small></h1>
+    {% endblock dataheader %}
+    {% block extendsuserbase %}
+
+    {% block subview %}
+    {% endblock subview %}
+
+
+    {% block blockaction %}
+    {% endblock blockaction %}
+
+
+    {% block coverall %}
+    {% endblock coverall %}
+
+    {% block allpanelheaders %}
+    {% endblock allpanelheaders %}
+        <div class="panel panel-white">
+            {% if updateerrors %}
+                <p style="margin-top:20px;  color:red;">{{dataset_active|title|purge_underscore}} Has got the following Error fix them and re-submit</p>
+                <p style="color:red;">{{updateerrors}}</p>
+            {% endif %}
+            <!--
+            <div class="panel-heading partition-dark">
+                <h4 class="panel-title" style="font-weight:bolder;">{{dataset_active|title|purge_underscore}}<span class="text-bold"></span></h4>
+            </div>
+            -->
+            {% if generrors %}
+                <p style="margin-left:20px; color:red; font-weight:bolder;">System Error has occured</p>
+                <p style="margin-left:20px; color:red; font-weight:bolder;">{{generrors.args}}</p>
+                <p style="margin-left:20px; color:red; font-weight:bolder;">{{generrors.message}}</p>
+                <div class="panel-heading">
+
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-sm-6" class="customrowwidth" style="width:100%;">
+                        <div class="tabbable">
+                            <ul id="myTab" class="nav nav-tabs">
+                                {% if dataset_active == 'participating_institution'%}
+                                    <li class="active">
+                                        <a href="#myTab_example1" data-toggle="tab">
+                                            <i class="green fa fa-home  fa-bank"></i>{{dataset_active|title|purge_underscore}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#myTab_example2" data-toggle="tab">
+                                            <i class="green fa fa-home fa-building"></i> PCI<span class="badges badge-danger"s> </span>
+                                        </a>
+                                    </li>
+
+                                {% elif dataset_active == 'institution_branch' %}
+                                    <li class="active">
+                                        <a href="#myTab_example1" data-toggle="tab">
+                                            <i class="green fa fa-home  fa-bank"></i>{{dataset_active|title|purge_underscore}}
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#myTab_example2" data-toggle="tab">
+                                            <i class="green fa fa-home fa-building"></i> PCI<span class="badges badge-danger"s> </span>
+                                        </a>
+                                    </li>
+
+                                {% elif dataset_active == 'participatinginstitutionstakeholder' %}
+                                    <li class="active">
+                                        <a href="#myTab_example1" data-toggle="tab">
+                                            <i class="green fa fa-home  fa-bank"></i>{{dataset_active|title|purge_underscore}}
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#myTab_example6"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>GSCAFB Information<i class=" width-auto"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#myTab_example5"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>Identification Information<i class=" width-auto"></i>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#myTab_example4"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>Employement Information<i class=" width-auto"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#myTab_example2" data-toggle="tab">
+                                            <i class="green fa fa-home fa-building"></i> PCI<span class="badges badge-danger"s> </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#myTab_example3" data-toggle="tab">
+                                            <i class="green fa fa-home fa-building"></i>SCI<span class="badges badge-danger"s> </span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="active">
+                                        <a href="#myTab_example1" data-toggle="tab">
+                                            <i class="green fa fa-home  fa-bank"></i>{{dataset_active|title|purge_underscore}}
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#myTab_example6"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>GSCAFB Information<i class=" width-auto"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#myTab_example5"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>Identification Information<i class=" width-auto"></i>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#myTab_example4"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>Employement Information<i class=" width-auto"></i>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#myTab_example2" data-toggle="tab">
+                                            <i class="green fa fa-home fa-building"></i> PCI<span class="badges badge-danger"s> </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#myTab_example3"  data-toggle="tab">
+                                            <i class="green fa fa-home  fa-cubes"></i>SCI<i class=" width-auto"></i>
+                                        </a>
+
+                                    </li>
+
+                                {% endif %}
+                            </ul>
+
+                            <form role="form" class="form-horizontal" method="post" action="/dataset/update/indentification/{{dataset_active}}/{{dataid}}/{{pciID}}/{{sciID}}/{{ieid}}/{{idi}}/{{gsid}}/">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="myTab_example1">
+                                        <div class="panel-body">
+                                                {% csrf_token %}
+                                                {{ formset.management_form }}
+                                                    {% if dataset_active == "creditborroweraccount" or dataset_active == "bouncedcheques" or dataset_active == "collateral_credit_guarantor" or dataset_active == "credit_application" or dataset_active == "financial_malpractice_data" or dataset_active == "collateral_material_collateral" %}
+                                                        <div class="ControlLayout" id="ControlLayout">
+                                                            <div class="row">
+                                                                <div class="col-md-6 customize-col-md-6" id="customize-col-md-6">
+                                                                    {% for form in clientform %}
+                                                                        <div class="form-group has-success">
+                                                                            <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                                {{form.label_tag}}
+                                                                            </label>
+
+                                                                            <div class="col-sm-9">
+                                                                                {{form}}
+                                                                            </div>
+                                                                            <input type="hidden" name="clientUpdatingID" value="{{clientupdatingID}}"> </input>
+                                                                        </div>
+                                                                    {% endfor %}
+
+                                                                    {% if dataset_active == "credit_application" %}
+                                                                        {% for form in datasetforms %}
+                                                                            <div id="{{form.name}}">
+                                                                                <div class="form-group has-success">
+                                                                                    {% if form.label == "Client Consent flag" %}
+                                                                                        <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                                            {{form.label}}
+                                                                                        </label>
+                                                                                        <div class="col-sm-9">
+                                                                                            {{form}}
+                                                                                        </div>                                                                
+                                                                                    {% elif form.label == "Applicant Classification" %}
+                                                                                        <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                                            {{form.label}}
+                                                                                        </label>
+                                                                                        <div class="col-sm-9">
+                                                                                            {{form}}
+                                                                                        </div>
+                                                                                    {% endif %}
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                </div>
+                                                                
+                                                                <div class="col-md-6 customecolumwidth" id="customecolumwidth">
+                                                                        {% for header_form in default_headers %}
+                                                                            <div class="form-group has-success">
+                                                                                <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                                    {{header_form.label}}
+                                                                                </label>
+
+                                                                                <div class="col-sm-9">
+                                                                                    {{header_form}}
+                                                                                </div>
+                                                                            </div>
+                                                                        {% endfor %}
+                                                                        <div class="form-group has-success">
+                                                                            <label class="col-sm-2 control-label " for="form-field-3">
+                                                                                Client Root Number
+                                                                            </label>
+
+                                                                            <div class="col-sm-9">
+                                                                                <input id="id_defaultheaders-Branch_name" maxlength="30" disabled="disabled" name="defaultheaders-Branch_name" value="{{ClientNumber}}" type="text">
+                                                                            </div>
+                                                                        </div>
+                                                                </div>
+                                                                
+                                                            </div> <!--end the row-->
+                                                            <h5 class="panel-title" style="color:white;">
+                                                                <a class="accordion-toggle collapsed btn btn-green" data-toggle="collapse" data-parent="#accordion" href="#displayDetails">
+                                                                        <i class="icon-arrow fa fa-arrow-circle-right"></i> If Entering borrower status click here.
+                                                                </a>
+                                                            </h5>
+                                                            <hr >
+                                                        <div style="" id="displayDetails" class="panel-collapse collapse">
+                                                            {% for form in datasetforms %}
+                                                                    <div id="{{form.name}}">
+                                                                        <div class="form-group has-success">
+                                                                            {% if form.label == "Client Consent flag" %}
+                                                                                <p></p>
+                                                                            {% elif form.label == "Applicant Classification" %}
+                                                                                <p></p>
+                                                                            {% else %}
+                                                                                <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                                    {{form.label}}
+                                                                                </label>
+
+                                                                                <div class="col-sm-9">
+                                                                                        {{form}}
+                                                                                </div>
+                                                                            {% endif %}
+
+                                                                        </div>
+                                                                    </div>
+                                                            {% endfor %}
+                                                            </div>
+                                                    </div>
+
+                                                {% elif dataset_active == "borrowerstakeholder" %}
+                                                    <div class="row">
+                                                        <div class="col-md-6 customize-col-md-6" id="customize-col-md-6">
+                                                            {% for form in clientform %}
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                    <input type="hidden" name="stakeholderID" value="{{stakeholderID}}"> </input>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                        
+                                                        <div class="col-md-6 customecolumwidth" id="customecolumwidth">
+                                                            {% for header_form in default_headers %}
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                        {{header_form.label}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9 borrowerstake">
+                                                                        {{header_form}}
+                                                                    </div>
+                                                                </div>
+                                                            {% endfor %}
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label " for="form-field-3">
+                                                                        Client Root Number
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        <input id="id_defaultheaders-Branch_name" maxlength="30" disabled="disabled" name="defaultheaders-Branch_name" value="{{ClientNumber}}" type="text">
+                                                                    </div>
+                                                                </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    <h5 class="panel-title" style="color:white;">
+                                                        <a class="accordion-toggle collapsed btn btn-green" data-toggle="collapse" data-parent="#accordion" href="#displayStakeDetails">
+                                                                <i class="icon-arrow fa fa-arrow-circle-right"></i> Stake Holder Details.
+                                                        </a>
+                                                    </h5>
+                                                    <hr >
+
+                                                    <div style="" id="displayStakeDetails" class="panel-collapse collapse">
+                                                        {% for form in datasetforms %}
+                                                            <div class="col-md-6">
+                                                                <div id="{{form.name}}">
+                                                                    <div class="form-group has-success">
+
+                                                                        <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                            {{form.label}}
+                                                                        </label>
+
+                                                                        <div class="col-sm-9">
+                                                                                {{form}}
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    
+                                                {% elif dataset_active == "participatinginstitutionstakeholder" %}
+                                                    <div class="row">
+                                                        <div class="col-md-6 customecolumwidth" id="customecolumwidth">
+                                                            {% for header_form in default_headers %}
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                        {{header_form.label}}
+                                                                    </label>
+                                                                    <div class="col-sm-9 participatinginstitutionstakeholder">
+                                                                        {{header_form}}
+                                                                    </div>
+                                                                </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                    <h5 class="panel-title" style="color:white;">
+                                                        <a class="accordion-toggle collapsed btn btn-green" data-toggle="collapse" data-parent="#accordion" href="#displayStakeDetails">
+                                                                <i class="icon-arrow fa fa-arrow-circle-right"></i> Stake Holder Details.
+                                                        </a>
+                                                    </h5>
+                                                    <hr >
+
+                                                    <div style="" id="displayStakeDetails" class="panel-collapse collapse">
+                                                        {% for form in datasetforms %}
+                                                            <div class="col-md-6">
+                                                                <div id="{{form.name}}">
+                                                                    <div class="form-group has-success">
+
+                                                                        <label class="col-sm-2 control-label " for="form-field-3" >
+                                                                            {{form.label}}
+                                                                        </label>
+
+                                                                        <div class="col-sm-9">
+                                                                                {{form}}
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                {% else %}
+                                                    {% for form in datasetforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                        {{form}}
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+
+                                                    <div class="form-actions">
+                                                        <button type="submit" class="btn btn-green pull-right" name="submitviews">
+                                                            Update Details and View<i class="fa fa-arrow-circle-right"></i>
+                                                        </button>
+                                                    </div>
+                                                {% endif %}
+
+                                                {% if viewtype == "True" %}
+                                                    <p>{{fine}}</p>
+                                                {% else %}
+                                                    {% if dataset_active == "credit_application" %}
+                                                        <div class="form-actions">
+                                                            {% if updating_instance.Credit_Application_Reference %}
+                                                                <button type="submit" class="btn btn-green pull-right" name="reborrowing" value="{{dataid}}">
+                                                                    Re-borrowing <i class="fa fa-arrow-circle-right"></i>
+                                                                </button>
+
+                                                                <button type="submit" class="btn btn-green pull-right" name="submitviews">
+                                                                    New Borrower / Update Details <i class="fa fa-arrow-circle-right"></i>
+                                                                </button>
+                                                            {% else %}
+                                                                <button type="submit" class="btn btn-green pull-right" name="submitviews">
+                                                                    New Borrower / Update Details <i class="fa fa-arrow-circle-right"></i>
+                                                                </button>
+                                                            {% endif %}
+                                                        </div>
+                                                    {% elif dataset_active == "borrowerstakeholder" %}
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-green pull-right" name="reborrowing" value="{{dataid}}">
+                                                                Re-Update Stake Holder <i class="fa fa-arrow-circle-right"></i>
+                                                            </button>
+                                                        </div>
+                                                    {% else %}
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-green pull-right" name="reborrowing" value="{{dataid}}">
+                                                                Re-Update <i class="fa fa-arrow-circle-right"></i>
+                                                            </button>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                        </div><!--panel-body-->
+                                    </div>
+
+                                    <div class="tab-pane fade" id="myTab_example2">
+                                        <div class="panel-body">
+                                            {% for form in pciforms %}
+
+                                                <div id="{{form.name}}">
+                                                    <div class="form-group has-success">
+                                                        <label class="col-sm-2 control-label" for="form-field-3" >
+                                                            {{form.label_tag}}
+                                                        </label>
+
+                                                        <div class="col-sm-9">
+                                                                {{form}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="myTab_example3">
+                                        <div class="panel-body">
+
+                                            {% for form in sciforms %}
+                                                <div id="{{form.name}}">
+                                                    <div class="form-group has-success">
+                                                        <label class="col-sm-2 control-label" for="form-field-3" >
+                                                            {{form.label_tag}}
+                                                        </label>
+
+                                                        <div class="col-sm-9">
+                                                                {{form}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+
+                                        </div>
+
+                                    </div>
+                                    
+<!---======================================================CLIENT CLASSIFICTATION ====================== -->
+                                    <!--Handle the forms for particular kind of classification individual or none individuall---->
+                                    <div class="tab-pane fade" id="myTab_example4">
+                                        {% if dataset_active == "credit_application" %}
+                                            {% if updating_instance.Applicant_Classification == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.Applicant_Classification == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                            
+                                        {% elif dataset_active == "borrowerstakeholder" %}
+                                            {% if updating_instance.Stakeholder_Type == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.Stakeholder_Type == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                <div class="panel-body">
+                                                    <h1>Unable to determine client classification</h1>
+                                                </div>
+                                            {% endif %}
+                                                                                    
+                                        {% elif dataset_active == "collateral_credit_guarantor" %}
+                                            {% if updating_instance.Guarantor_Classification == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.Guarantor_Classification == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                <div class="panel-body">
+                                                    <h1>Unable to determine client classification</h1>
+                                                </div>
+                                            {% endif %}
+                                                                                    
+                                        {% elif dataset_active == "financial_malpractice_data" %}
+                                            {% if updating_instance.Consumer_Classification == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.Consumer_Classification == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                <div class="panel-body">
+                                                    <h1>Unable to determine client classification</h1>
+                                                </div>
+                                            {% endif %}
+                                        
+                                        {% elif dataset_active == "participatinginstitutionstakeholder" %}
+                                            {% if updating_instance.Stakeholder_Type == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.Stakeholder_Type == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                <div class="panel-body">
+                                                    <h1>Unable to determine client classification</h1>
+                                                </div>
+                                            {% endif %}
+                                            
+                                                
+                                        {% elif dataset_active == "bouncedcheques" %}
+                                            {% if updating_instance.PI_Client_Classification == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.PI_Client_Classification == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% else %}
+                                                <div class="panel-body">
+                                                    <h1>Unable to determine client classification</h1>
+                                                </div>
+                                            {% endif %}
+                                        {% else %}
+                                            {% if updating_instance.Borrower_Classification == "1" %}
+                                                <h1>This details do not apply to none individual Client.</h1>
+                                                <div class="collapse">
+                                                    <div class="panel-body">
+                                                        {% for form in ieforms %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                        {{form.label_tag}}
+                                                                    </label>
+
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% elif updating_instance.Borrower_Classification == "0" %}
+                                                <div class="panel-body">
+                                                    {% for form in ieforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                                    {{form.label_tag}}
+                                                                </label>
+
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+<!--==================================================CLIENT CLASSIFICATION ENDS HERE------------------------------- -->
+
+<!--==================================IDENTIFICATION_INFORMATION Classification Manipulation--------------- -->
+                                    <div class="tab-pane fade" id="myTab_example5">
+                                        {% if dataset_active == "credit_application" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Applicant_Classification == "1" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Applicant_Classification == "0" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" or form.name == "II_Country_Issuing_Authority" or form.name == "II_Nationality" or form.name == "II_Country_Of_Issue"%}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in idforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %} <!--ending the classfication conditional-->
+                                            </div>
+                                            
+                                        {% elif dataset_active == "creditborroweraccount"  or dataset_active == "collateral_material_collateral"%}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Borrower_Classification == "1" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number"%}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Borrower_Classification == "0" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" or form.name == "II_Country_Issuing_Authority" or form.name == "II_Nationality" or form.name == "II_Country_Of_Issue" %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in idforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %} <!--ending the classfication conditional-->
+                                            </div>
+                                            
+                                        {% elif dataset_active == "financial_malpractice_data"%}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Consumer_Classification == "1" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number"%}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Consumer_Classification == "0" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" or form.name == "II_Country_Issuing_Authority" or form.name == "II_Nationality" or form.name == "II_Country_Of_Issue" %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in idforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %} <!--ending the classfication conditional-->
+                                            </div>
+                                            
+                                        {% elif dataset_active == "collateral_credit_guarantor"%}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Guarantor_Classification == "1" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number"%}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Guarantor_Classification == "0" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" or form.name == "II_Country_Issuing_Authority" or form.name == "II_Nationality" or form.name == "II_Country_Of_Issue"%}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in idforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %} <!--ending the classfication conditional-->
+                                            </div>
+                                            
+                                        {% elif dataset_active == "borrowerstakeholder" or dataset_active == "participatinginstitutionstakeholder"%}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Stakeholder_Type == "1" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number"%}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Stakeholder_Type == "0" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number"  or form.name == "II_Country_Issuing_Authority" or form.name == "II_Nationality" or form.name == "II_Country_Of_Issue" %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in idforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %} <!--ending the classfication conditional-->
+                                            </div>
+                                            
+                                        {% elif dataset_active == "bouncedcheques"%}
+                                            <div class="panel-body">
+                                                {% if updating_instance.PI_Client_Classification == "1" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.PI_Client_Classification == "0" %}
+                                                    {% for form in idforms %}
+                                                        {% if form.name == "II_Police_ID_Number"  or form.name == "II_UPDF_Number" or form.name == "II_KACITA_License_Number" or form.name == "II_Public_Service_Pension_Number" or form.name == "II_Teacher_Registration_Number" or form.name == "II_Passport_Number" or form.name == "II_Drivers_Licence_ID_Number" or form.name == "II_Voters_PERNO" or form.name == "II_Drivers_License_Permit_Number" or form.name == "II_Country_ID" or form.name == "II_NSSF_Number" or form.name == "II_Country_Issuing_Authority" or form.name == "II_Nationality" or form.name == "II_Country_Of_Issue"%}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in idforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %} <!--ending the classfication conditional-->
+                                            </div>
+                                        {% endif %} <!--ending the main if -->
+                                    </div>
+<!-- ======================================= ENDING IDENTIFICATION_INFORMATION CLASSIFICATION -------------------------->
+
+<!--- CLASSIFIY USERS of the GSCAFB---------------------------------------------------------- -->
+                                    <div class="tab-pane fade" id="myTab_example6">
+                                        {% if dataset_active == "credit_application" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Applicant_Classification == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Applicant_Classification == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                    
+                                        {% elif dataset_active == "creditborroweraccount"  or dataset_active == "collateral_material_collateral"%}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Borrower_Classification == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Borrower_Classification == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        
+                                        {% elif dataset_active == "bouncedcheques" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.PI_Client_Classification == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.PI_Client_Classification == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                            
+                                        {% elif dataset_active == "participatinginstitutionstakeholder" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Stakeholder_Type == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Stakeholder_Type == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                            
+                                        {% elif dataset_active == "borrowerstakeholder" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Stakeholder_Type == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Stakeholder_Type == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                            
+                                        {% elif dataset_active == "collateral_credit_guarantor" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Guarantor_Classification == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Guarantor_Classification == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                            
+                                        {% elif dataset_active == "financial_malpractice_data" %}
+                                            <div class="panel-body">
+                                                {% if updating_instance.Consumer_Classification == "1" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Surname" or form.name == "GSCAFB_Forename1" or form.name == "GSCAFB_Forename2" or form.name == "GSCAFB_Forename3" or form.name == "GSCAFB_Gender" or form.name == "GSCAFB_Marital_Status" or form.name == "GSCAFB_Date_of_Birth" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    
+                                                {% elif updating_instance.Consumer_Classification == "0" %}
+                                                    {% for form in gscafbforms %}
+                                                        {% if form.name == "GSCAFB_Business_Name" or form.name == "GSCAFB_Trading_Name" or form.name == "GSCAFB_Activity_Description" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Industry_Sector_Code" or form.name == "GSCAFB_Date_Registered" or form.name == "GSCAFB_Business_Type_Code" %}
+                                                            <div id="{{form.name}}" class="collapse">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% else %}
+                                                            <div id="{{form.name}}">
+                                                                <div class="form-group has-success">
+                                                                    <label class="col-sm-2 control-label" for="form-field-3">
+                                                                        {{form.label_tag}}
+                                                                    </label>
+                                                                    <div class="col-sm-9">
+                                                                        {{form}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        
+                                                    {% endfor %}
+                                                {% else %}
+                                                    {% for form in gscafbforms %}
+                                                        <div id="{{form.name}}">
+                                                            <div class="form-group has-success">
+                                                                <label class="col-sm-2 control-label" for="form-field-3">
+                                                                    {{form.label_tag}}
+                                                                </label>
+                                                                <div class="col-sm-9">
+                                                                    {{form}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+<!--ENDINT THE CLASSIFICATION CHECK UP----------------------------------------- -->
+                                </div><!--tabp content-->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endblock extendsuserbase %}

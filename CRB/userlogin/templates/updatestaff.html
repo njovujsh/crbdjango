@@ -1,0 +1,42 @@
+{% extends "admindashboard.html" %}
+
+    
+    {% block extendsuserbase %}
+        <form role="form" class="form-horizontal" method="post" action="/user/addnew/updated/{{userid}}/{{nameid}}/">
+            {{error1}}
+            {{error2}}
+            {% csrf_token %}
+            {{ formset.management_form }}
+            
+            {% for uforms in userforms %}
+                <div class="form-group has-success">
+                    <label class="col-sm-2 control-label" for="form-field-3" >
+                        {{uforms.label_tag}}
+                    </label>
+
+                    <div class="col-sm-9">
+                        {{ uforms }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% for form in useraddforset %}
+                <div class="form-group has-success">
+                    <label class="col-sm-2 control-label" for="form-field-3" >
+                        {{form.label_tag}}
+                    </label>
+
+                    <div class="col-sm-9">
+                        {{ form }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-green pull-right" name ="submits">
+                    Add new Staff <i class="fa fa-arrow-circle-right"></i>
+                </button>
+            </div>
+        </form>
+                    
+    {% endblock extendsuserbase %}

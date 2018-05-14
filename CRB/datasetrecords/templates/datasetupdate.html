@@ -1,0 +1,170 @@
+{% extends "dashboard.html" %}
+
+    <!--block for the title-->
+    {% load my_custom_tags %}
+    {% block title %}
+    {{ block.super }} - {{datasetinput|title}}
+    {% endblock title %}
+    <!--ending the bock for the title -->
+    
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    {% block dataheader %}
+        <h1><b>{{who|title}}</b> <small><code><b>Dataset reference</b></code> or <code><b>Data ref</b></code> below, should correspond to the above</small></h1>
+    {% endblock dataheader %}
+    
+    {% block subview %}
+   
+    {% endblock subview %}
+
+    
+    {% block blockaction %}
+    
+    {% endblock blockaction %}
+    
+    {% block maincontent %}
+    
+    {% block coverall %}
+    
+    {% endblock coverall %}
+        <div class="panel panel-white">
+            <div class="panel-heading">
+                <h4 class="panel-title">{{dataset_active|title|purge_underscore}}<span class="text-bold"></span></h4>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-sm-6" class="customrowwidth" style="width:100%;">
+                    <div class="tabbable">
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#myTab_example1" data-toggle="tab">
+                                    <i class="green fa fa-home  fa-bank"></i> Add New Records to {{dataset_active|title|purge_underscore}} 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#myTab_example2" data-toggle="tab">
+                                    <i class="green fa fa-home fa-building"></i> Primary Contact Information <span class="badges badge-danger"s> </span>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#myTab_example3"  data-toggle="tab">
+                                    <i class="green fa fa-home  fa-cubes"></i> Secondary Contact Information <i class=" width-auto"></i>
+                                </a>
+                                
+                            </li>
+                        </ul>
+                        
+                        <form role="form" class="form-horizontal" method="post" action="/dataset/data/entered/{{dataset}}/{{dataid}}/{{pciID}}/{{sciID}}/">
+                        <div class="tab-content">
+                            
+                                <div class="tab-pane fade in active" id="myTab_example1">
+                                    <div class="panel-body">
+                                        
+                                                {% csrf_token %}
+                                                {{ formset.management_form }}
+                                                {% for form in datasetforms %}
+                                                    <div class="form-group has-success">
+                                                        <label class="col-sm-2 control-label" for="form-field-3" >
+                                                            {{form.label_tag}}
+                                                        </label>
+                                                        
+                                                        <div class="col-sm-9">
+                                                                {{form}}
+                                                        </div>
+                                                        
+                                                    </div>
+                                                {% endfor %}
+                                                
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-green pull-right" name ="submits">
+                                                    Submit <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                                
+                                                <button type="submit" class="btn btn-green pull-right" name="submitviews">
+                                                    Submit And view <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
+                                            </div>
+                                                
+                                        
+                                    </div><!--panel-body-->
+                        
+                                </div>
+                                <div class="tab-pane fade" id="myTab_example2">
+                                    <!--
+                                    <p>
+                                        <a href="#myTab_example3" class="btn btn-red show-tab">
+                                            Go to Dropdown 1
+                                        </a>
+                                    </p>
+                                    -->
+                                    <div class="panel-body">
+                                        {% for form in pciforms %}
+                                        
+                                            <div class="form-group has-success">
+                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                    {{form.label_tag}}
+                                                </label>
+                                                
+                                                <div class="col-sm-9">
+                                                        {{form}}
+                                                </div>
+                                            </div>
+                                        {% endfor %} 
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="myTab_example3">
+                                    <div class="panel-body">
+                                       
+                                        {% for form in sciforms %}
+                                        
+                                            <div class="form-group has-success">
+                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                    {{form.label_tag}}
+                                                </label>
+                                                
+                                                <div class="col-sm-9">
+                                                        {{form}}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        
+                                    </div>
+                                    
+                                    <p>
+                                        <a href="#myTab_example4" class="btn btn-purple show-tab">
+                                           
+                                        </a>
+                                    </p>
+                                </div>
+                                
+                                <div class="tab-pane fade" id="myTab_example4">
+                                    <p>
+                                       
+                                    </p>
+                                    <p>
+                                        <a href="#myTab_example1" class="btn btn-purple show-tab">
+                                             
+                                        </a>
+                                    </p>
+                                </div>
+                            
+                        </div><!--tabp content-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock maincontent %}
+    
+    

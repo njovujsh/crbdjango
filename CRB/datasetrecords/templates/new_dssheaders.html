@@ -1,0 +1,54 @@
+{% extends "admindashboard.html" %}
+
+        {% block title %}
+    {{ block.super }} - {{newheaders}}
+    {% endblock title %}
+    {% block overridemsg %}
+            Updating New data submission headers
+    {% endblock overridemsg %}
+        
+    {% block extendsuserbase %}
+    
+    {% load my_custom_tags %}
+        {% if ERRORS %}
+            <p style="color:#FF0000;">Errors were found in your form</p>
+            <li style="color:#A52A2A;">{{ERRORS}}</li>
+        {% endif %}
+        <form role="form" class="form-horizontal" method="post" action="/dssh/submission/new/dssh/">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {% for form in dssformset %}
+                <div class="form-group has-success">
+                    <label class="col-sm-2 control-label" for="form-field-3" >
+                        {{form.label_tag}}
+                    </label>
+
+                    <div class="col-sm-9">
+                        {{ form }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-green pull-right" name ="submits">
+                    Add new DSS <i class="fa fa-arrow-circle-right"></i>
+                </button>
+            </div>
+        </form>
+
+        <hr >
+        <hr >
+        <hr >
+        <p style="text-align:center; font-size:18px;">If not branch names please upload them</p>
+        <form role="form" class="form-horizontal" method="post" action="/dssh/uploadbranchcodes/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input name="branchcode" type="file">
+            <div class="form-actions">
+                <button type="submit" class="btn btn-green pull-right" name ="submits">
+                    Upload Branch Code and Names <i class="fa fa-arrow-circle-right"></i>
+                </button>
+            </div>
+        </form>
+            
+    {% endblock extendsuserbase %}
+

@@ -1,0 +1,93 @@
+{% extends "admindashboard.html" %}
+    
+    {% block title %}
+    {{ block.super }} - {{customtitle}}
+    {% endblock title %}
+    
+    {% block innercontent %}
+        <p>From here you can select to download processed files.</p>
+    {% endblock innercontent %}
+    
+    {% block extendsuserbase %}
+            
+                
+            {% if availablefiles %}
+                <form role="form" class="form-horizontal" method="post" action="/submission/permanentpurging/information/searching/">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="sample-table-1">
+                            {% csrf_token %} 
+                                <!--
+                                {% if deletemode %}
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-green pull-rights" name ="submits">
+                                            Delete Selected Records <i class="fa fa-sarrow-circle-right"></i>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                -->
+                                <thead>
+                                    <tr>
+                                        <!--
+                                        {% if deletemode %}
+                                                <th class="centers">
+                                                    <div class="checkbox-tables">
+                                                        <input type="checkbox" class="flat-grey selectall">
+                                                    </div>
+                                                </th>
+                                        {% endif %}
+                                        -->
+                                        {% for file_h in file_headers %}
+                                            {% if file_h|title == "Id" %}
+                                                <th>Action</th>
+                                            {% else %}
+                                                <th>{{file_h|title}}</th>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                                    
+                                <tbody>
+                                    
+                                        <!--
+                                        {% if deletemode %}
+                                                <td class="center">
+                                                    <div class="checkbox-tables">
+                                                        <input type="checkbox" class="flat-grey foocheck" name="{{data.id}}">
+                                                    </div>
+                                                </td>
+                                        {% endif %}
+                                        --> 
+                                    {% for files in availablefiles %}
+                                        <tr>
+                                            <td><a href="/file/filehandler/processfiles/byid/{{files.id}}">Download</a></td>
+                                            <td>{{files.excelname}}</td>
+                                            <td>{{files.sheetname}}</td>
+                                            <td>{{files.dateuploaded}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            {% else %}
+                <p>There are no files to display</p>
+            {% endif %}        
+        
+            <div class="pagination">
+                        <span class="step-links">
+                        {% if availablefiles.has_previous %}
+                            <a href="?page={{ availablefiles.previous_page_number }}">Previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ availablefiles.number }} of {{ availablefiles.paginator.num_pages }}
+                        </span>
+
+                        {% if availablefiles.has_next %}
+                            <a href="?page={{ availablefiles.next_page_number }}">Next</a>
+                        {% endif %}
+                        </span>
+            </div>
+        
+    {% endblock extendsuserbase %}

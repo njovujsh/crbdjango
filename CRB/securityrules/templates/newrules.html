@@ -1,0 +1,85 @@
+{% extends "admindashboard.html" %}
+
+    {% load my_custom_tags %}
+    
+    {% block newrules %}
+    {% load my_custom_tags %}
+        <h4 class="center-it centeroptions">Application Specific Firewalls rules.</h4>
+        <p>NOTE: Depends on NetfilterQueue and python-iptables.</p>
+        <p><code>WARNING</code>: This rules defend only this application not the entire system, which the application is running.</p>
+    {% endblock newrules %}
+    
+    {% block extendsuserbase %}     
+    <div class="col-sm-12s">  
+        <div class="panel panel-whites">
+            {% if is_update %}
+                <form method="POST" action="/srules/update/rulesid/{{RULEID}}/" class="form-horizonstal" role="form">
+                   {% csrf_token %}
+                            {{ formset.management_form }}
+                            {% if securityforms %}
+                                {% for form in securityforms %}
+                                    <div class="form-group has-success">
+                                        <label class="col-sm-2 control-label" for="form-field-3" >
+                                            {{form.label_tag}}
+                                        </label>
+    
+                                        <div class="col-sm-9">
+                                            {{ form }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="form-group">      
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-green" name="submits">
+                                    Add Rule <i class="fa fa-arrow-circle-right"></i>
+                                </button>
+                            </div>
+                            <div class="form-group">      
+                            </div>
+                    <p></p>
+                    <p></p>
+                    <p>View Currently <a href="/srules/sview/"> Active Rules</a></p>
+                    <div class="form-group">      
+                    </div>
+                </form>
+            {% else %}
+                <form method="POST" action="." class="form-horizonstal" role="form">
+                {% csrf_token %}
+                        {{ formset.management_form }}
+                        {% if securityforms %}
+                            {% for form in securityforms %}
+                                <div class="form-group has-success">
+                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                        {{form.label_tag}}
+                                    </label>
+
+                                    <div class="col-sm-9">
+                                        {{ form }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <div class="form-group">      
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-green" name="submits">
+                                Add Rule <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                        <div class="form-group">      
+                        </div>
+                <p></p>
+                <p></p>
+                <p>View Currently <a href="/srules/sview/"> Active Rules</a></p>
+                <div class="form-group">      
+                </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock extendsuserbase %}
+

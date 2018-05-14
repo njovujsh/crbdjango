@@ -1,0 +1,16 @@
+{% extends "admindashboard.html" %}
+{% load my_custom_tags %}
+    {% block overridemsg %}
+        <p>Select Records to View it's validation Report.</p>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}
+        {% for records in datasetrecords %}
+            <div class="space20">
+                <div class="btn-group">
+                    <a class="btn btn-grey pull-right" href="/importdata/showsaved/andvalidated/">
+                    {{records.dataset|purge_underscore}}</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock extendsuserbase %}

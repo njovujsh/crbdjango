@@ -1,0 +1,94 @@
+{% extends "admindashboard.html" %}
+
+    {% load my_custom_tags %}
+    
+    {% block overridemsg %}
+    {% load my_custom_tags %}
+        <div class="row">
+            {% if verrors %}
+                <p style="margin-left:20px; color:red;">The following errors occured examine them and fix: Note logging is enabled</p>
+                <p style="margin-left:20px; color:red;">{{verrors}}</p>
+            {% endif %}
+            <form method="POST" action="/validation/begindata/recordsvalidation/" class="form-horizonstal" role="form">
+                {% csrf_token %}
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="form-field-select-1">
+                            Select Records you would like to perform <span class="text-bold">validation</span> on 
+                        </label>
+                        
+                        <select id="validationdata" class="form-control" name="datasetselected">
+                            <option value="AL"></option>
+                            {% for records in datasetrecords %}
+                                <option value="{{records.slug}}" style="font-weight:bold;">{{records.slug|purge_underscore|putspaces}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="form-field-select-1">
+                            Validate records against which <span class="text-bold">rule?</span> operation not supported
+                        </label>
+                        
+                        <select id="form-field-select-1" class="form-control">
+                            <option value="AL"></option>
+                            {% for rule in rules %}
+                                <option value="{{rule.rules}}">{{rule.rules}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            
+            <h4 id="validataing" style="margin-left:30px;">Validating</h4>
+            <h4 id="recordcount" style="margin-left:30px;">Available Records</h4>
+        </div>
+        <div class="space20">
+            <div class="btn-group">
+                <a href="#" data-toggle="" class="btn btn-green">
+                    Corresponding Enforcements --><span class=""></span>
+                </a>
+            </div>
+            
+            <div class="btn-group">
+                <select id="validationrecords" class="form-control">
+                    <option value="AL" style="font-weight:bold;">------------</option>
+                    {% for records in datasetrecords %}
+                        <option value="AL" style="font-weight:bold;"></option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="btn-group">
+                <!--
+                <a class="btn btn-green pull-righta" href="#"><i class="fa fa-plus"></i> Validate Entry</a>
+                -->
+            </div>
+            
+            <div class="btn-group pull-right">
+                <button type="submit" class="btn btn-green pull-right" name="submits">
+                        Validate Selection <i class=""></i>
+                </button>
+            </div>
+        </div>
+        </form>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}       
+        <h4 class="center-it centeroptions">Possible Options</h4>
+        
+        <p>NOTE: Records won't be outputed on files, They shall be saved for analysis
+        </p>
+        
+        <p>INFO: The system will redirect you to the report section for instant/quick glance before graphing analysis.
+        </p>
+        <p>WARNING: During the analysis the Interface may be unresponsive, but it's ok just for a short time only.</p>
+        
+        <h4 class="center-it centeroptions">Other Validation Options</h4>
+        
+        <p>Incase you want to validate any records, click it, navigate to view Records, and check the drop option on validation.</p>
+        <h4>OR</h4>
+        <p>The Above tab on  Processing & Files. Select Process Records. NOTE: That's the system's recommended way.</p>
+    {% endblock extendsuserbase %}
+

@@ -1,0 +1,42 @@
+{% extends "admindashboard.html" %}
+
+    
+    {% block title %}
+    {{ block.super }} - {{dsshupdatestitle|title}}
+    {% endblock title %}
+
+    {% block overridemsg %}
+        Add new data submission headers.
+            <span class="text-bold"> Updated versions can be selected later on.</span>
+    {% endblock %}
+    {% block extendsuserbase %}
+    <!---FORMGIN---->
+            
+        <div class="col-sm-12s">
+            <div class="panel panel-whites">
+                <div class="panel-body">
+                    <form role="form" class="form-horizontal" method="post" action="/dssh/upheaders/dsshupdatedversion/{{id}}/">
+                        {% csrf_token %}
+                        {{ formset.management_form }}
+                        {% for form in dsshforms %}
+                            <div class="form-group has-success">
+                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                    {{form.label_tag}}
+                                </label>
+
+                                <div class="col-sm-9">
+                                    {{ form }}
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-green pull-right" name="submits">
+                                Update DSS Headers<i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock extendsuserbase %}

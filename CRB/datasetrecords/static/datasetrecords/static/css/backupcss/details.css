@@ -1,0 +1,60 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+
+#accountdetails{
+   background-color:#F0F0F0;
+   margin-left: px;
+   margin-right:px;
+   border-left:4px solid #2A779A;
+}
+
+
+h1.infor{
+   color:#fff;
+   margin:0px;
+   padding:0px;
+   font-size:20px;
+   text-align:center;
+   background-color:#2A779A; /*#B8D30B;*/
+   border-bottom:5px solid #6EC2E8;
+   height: 50px;
+}
+
+#accountdetails h1{
+   padding-top:10px;
+}
+
+#accountdetails p{
+    margin-left: 66px;
+    padding-top:6px;
+    padding-bottom:6px;
+
+}
+
+#systemdetails{
+   background-color:#F0F0F0;
+   margin-left: px;
+   margin-right:px;
+   border-left:4px solid #2A779A; 
+}
+
+h1.systemdetails{
+   color:#fff;
+   margin:0px;
+   padding:0px;
+   font-size:20px;
+   text-align:center;
+   background-color:#2A779A; /*#B8D30B;*/
+   border-bottom:5px solid #6EC2E8;
+   /*border-top:5px solid #6EC2E8;*/
+   height: 50px;
+}
+
+#systemdetails p{
+   margin-left: 66px;
+   padding-top:6px;
+   padding-bottom:6px;
+}
+

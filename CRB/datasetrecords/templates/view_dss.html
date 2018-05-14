@@ -1,0 +1,63 @@
+{% extends "admindashboard.html" %}
+    
+    
+    {% block title %}
+    {{ block.super }} - {{viewdssh|title}}
+    {% endblock title %}
+    
+    {% block extendsuserbase %}
+    
+    {% load my_custom_tags %}
+    
+                {% if headers %}
+                    <table class="table table-hover" id="sample-table-1">
+                        <thead>
+                            <tr>
+                                {% for dss_h in dss_headers %}
+                                    {% if dss_h|title == "Id" %}
+                                        <th>Action</th>
+                                           
+                                    {% else %}
+                                        <th>{{dss_h|title}}</th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for dssh in headers %}
+                                <tr>
+                                    <td><a href="/dssh/edit/dsshid/{{dssh.id }}">Edit</a></td>
+                                    <td>{{dssh.pi_identification_code}}</td>
+                                    <td>{{dssh.branch_name}}</td>
+                                    <td>{{dssh.branch_code}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                
+            {% else %}
+                <p>Unfortunately no branch settings saved.</p>
+            {% endif %}
+            
+            <!---pagination--->
+            <div class="panel-heading border-light">
+                <div class="pagination">
+                    <span class="step-links">
+                    {% if headers.has_previous %}
+                        <a href="?page={{ headers.previous_page_number }}">Previous</a>
+                    {% endif %}
+        
+                    <span class="current">
+                        Page {{ headers.number }} of {{ headers.paginator.num_pages }}
+                    </span>
+        
+                    {% if headers.has_next %}
+                        <a href="?page={{ headers.next_page_number }}">Next</a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+        
+       
+    {% endblock extendsuserbase %}

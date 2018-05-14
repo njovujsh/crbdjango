@@ -1,0 +1,37 @@
+{% extends "admindashboard.html" %}
+{% load my_custom_tags %}
+    
+    {% block overridemsg %}
+    
+    
+        <div class="row">
+            <form>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="form-field-select-1">
+                            Select the manaul below <span class="text-bold"> </span>  
+                        </label>
+                        
+                        <select id="form-field-select-1" class="form-control" onchange="handle_select()">
+                            <option value="">&nbsp;</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
+                    <!--
+                        <select id="form-field-select-1" class="form-control" name="addhelpers"onchange="handle_dropdown_by_select(this.form.addhelpers)">
+                            <option value="">&nbsp;</option>
+                            <option value="AL">Alabama</option>
+                        </select>
+                    -->
+                </div>
+            </form>
+        </div>
+    {% endblock overridemsg %}
+    
+    {% block extendsuserbase %}
+                    
+    {% endblock extendsuserbase %}
+
+

@@ -1,0 +1,61 @@
+{% extends "admindashboard.html" %}
+    
+    {% load my_custom_tags %}
+    
+    {% block overridemsg %}
+        {% if records_to_search == "all" %}
+              Your Performing a recursive search on all records 
+        {% else %}
+        Graphed & Analysed Records for <span class="text-bold">{{ records_to_search|purge_underscore }}</span>
+        {% endif %}
+    {% endblock overridemsg %}
+    
+    
+    {% block extendsuserbase %}
+        <div class="search-classic">
+            {% if allgraphed %}                             
+                {% for analysis in allgraphed %}
+                    <div class="search-result">
+                        <style type="text/css">
+                            .simpleimage img{
+                                width:750px;
+                                height:700px;
+                                margin-left:110px;
+                            }
+                            
+                            .simpleimage{
+                                height:800px;
+                            }
+                        </style>
+                        <div class="simpleimage">
+                            <img src="{{STATIC_URL}}swirlingmedia/{{analysis.imagename}}.png" alt="{{ Exenstion}}" />
+                        </div>
+                        <p>
+                            {{analysis.date}}
+                        </p>
+                    </div>
+                {% endfor %}
+                <hr>
+            {% else %}
+                <p>Unfortunately You have not made any validation for graphed analysis on record {{records_to_search|purge_underscore}}. <a href="/validation/beginvalidation/validatedata/" class="btn btn-green"> Start Here</a></p>
+            {% endif %}
+            
+            <div class="panel-heading border-light">
+                <div class="pagination">
+                    <span class="step-links">
+                    {% if allgraphed.has_previous %}
+                        <a href="?page={{ allgraphed.previous_page_number }}" class="btn btn-green">Previous</a>
+                    {% endif %}
+        
+                    <span class="current">
+                        Page {{ allgraphed.number }} of {{ allgraphed.paginator.num_pages }}
+                    </span>
+        
+                    {% if allgraphed.has_next %}
+                        <a href="?page={{ allgraphed.next_page_number }}" class="btn btn-green">Next</a>
+                    {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>                                   
+    {% endblock extendsuserbase %}

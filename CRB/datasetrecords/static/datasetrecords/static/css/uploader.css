@@ -1,0 +1,223 @@
+
+.uploadinput input[type=text],
+.uploadinputinput[type=file]{
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 12px;
+    margin-left: 18px;
+    width: 410px;
+    height: 35px;
+    border: 1px solid #c7d0d2;
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+}
+.uploadinput input[type=text]:hover{
+    border: 1px solid #b6bfc0;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+}
+.uploadinput input[type=text]:focus,
+.uploadinput input[type=file]{
+    border: 1px solid #a8c9e4;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+}
+
+/*
+.uploadlabel label {
+    color: #555;
+    display: inline-block;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 14px;
+    float:left;
+}
+
+.uploadlabel{
+    margin-left: 30px;
+}
+
+#id_ftitle{
+    margin-left: 34px;
+}
+*/
+
+
+.form-group{
+    margin-top: 0px;
+    /*margin-bottom:2px;*/
+    /*margin-bottom: 15px;*/
+}
+
+#ControlLayout .form-group{
+    margin-bottom: 8px !important;
+}
+
+select {
+    width: 410px;
+}
+
+#id_PCI_Forms_PCI_Region_chosen, #id_SCI_Forms_SCI_Region_chosen, #id_SCI_Forms-SCI_District,#id_SCI_Forms_SCI_District_chosen, #id_SCI_Forms-SCI_County_or_Town, #id_SCI_Forms_SCI_County_or_Town_chosen{
+    width: 410px !important
+}
+
+#id_SCI_Forms-SCI_Parish, #id_SCI_Forms_SCI_Parish_chosen, #id_SCI_Forms-SCI_Country_Code, #id_SCI_Forms-SCI_Flag_for_ownership, #id_SCI_Forms_SCI_Country_Code_chosen{
+    width: 410px !important
+}
+
+#id_SCI_Forms_SCI_Flag_for_ownership_chosen{
+    width: 410px !important
+}
+
+#id_PCI_Forms_PCI_District_chosen, #id_PCI_Forms_PCI_District, #id_PCI_Forms-PCI_County_or_Town, #id_PCI_Forms_PCI_County_or_Town_chosen{
+    width: 410px !important
+}
+
+#id_PCI_Forms-PCI_Parish, #id_PCI_Forms_PCI_Parish_chosen{
+    width: 410px !important
+}
+
+#id_PCI_Forms-PCI_Country_Code, #id_PCI_Forms_PCI_Country_Code_chosen{
+    width: 410px !important
+}
+
+#id_PCI_Forms-PCI_Flag_of_Ownership, #id_PCI_Forms_PCI_Flag_of_Ownership_chosen{
+    width: 410px !important
+}
+
+#id_GSCAFBForms-GSCAFB_Business_Type_Code, #id_GSCAFBForms_GSCAFB_Business_Type_Code_chosen{
+    width: 410px !important
+}
+
+#id_GSCAFBForms-GSCAFB_Gender, #id_GSCAFBForms_GSCAFB_Gender_chosen{
+    width: 410px !important;
+}
+
+#id_GSCAFBForms-GSCAFB_Marital_Status, #id_GSCAFBForms_GSCAFB_Marital_Status_chosen{
+    width: 410px !important
+}
+
+#id_default_headers, #id_default_headers_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-PI_Identification_Code, #id_standard_forms_PI_Identification_Code_chosen{
+    width: 410px !important
+}
+
+ #id_standard_forms_Applicant_Classification_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Currency, #id_standard_forms_Currency_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Credit_Account_or_Loan_Product_Type, #id_standard_forms_Credit_Account_or_Loan_Product_Type_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Credit_Application_Status, #id_standard_forms_Credit_Application_Status_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Rejection_Reason, #id_standard_forms_Rejection_Reason_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms_Client_Consent_flag_chosen{
+    width: 410px !important
+}
+
+#id_IDForms-II_Country_Of_Issue, #id_IDForms_II_Country_Of_Issue_chosen{
+    width: 410px !important
+}
+
+#id_IDForms-II_Country_Issuing_Authority, #id_IDForms_II_Country_Issuing_Authority_chosen{
+    width: 410px !important
+}
+#id_IDForms-II_Nationality, #id_IDForms_II_Nationality_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Borrowers_Client_Number, #id_standard_forms_Borrowers_Client_Number_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Stakeholder_Type, #id_standard_forms_Stakeholder_Type_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Stakeholder_Category, #id_standard_forms_Stakeholder_Category_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms-Shareholder_Percentage, #id_standard_forms_Shareholder_Percentage_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms_Currency_Type_chosen, #id_standard_forms_Collateral_Currency_chosen{
+    width: 410px !important
+}
+
+#id_standard_forms_Cheque_Currency_chosen{
+    width: 410px !important
+}
+
+#Borrowers_Client_NumberFRA_chosen{
+    width: 410px !important
+}
+
+#Borrowers_Client_NumberBS_chosen{
+    width: 410px !important;
+}
+
+#Borrowers_Client_NumberSelect_chosen{
+    width: 410px !important;
+}
+
+#Borrowers_Client_NumberCMC_chosen{
+    width: 410px !important;
+}
+
+#id_SCI_Forms-SCI_Region{
+    width: 410px !important;
+}
+
+.control-label{
+    width: 210px !important;
+}
+
+.customize-col-md-6, #customecolumwidth{
+    width:100% !important;
+    max-width:100% !important;
+}
+
+#creditstarttable_wrapper input{
+    width: 410px !important;
+}
+
+div.dataTables_length label {
+    position: relative !important;
+    top: 14px;
+}
+
+div.dataTables_length select {
+    width: 205px;
+}
+
+
+.side-bar-details{
+    width:20% !important;
+}
+
+
+.client-details{
+    text-align:center;
+    font-size:16px;
+    color:#008000;
+    top: 8px;
+    position: relative;
+}

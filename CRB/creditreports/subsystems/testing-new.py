@@ -1,0 +1,31 @@
+PI_Identification_Code = {1L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          2L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          3L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          4L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          5L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          6L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          7L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          8L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          9L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          10L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          11L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          12L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          13L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          14L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          15L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          16L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          17L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          18L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          19L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          20L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          21L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          22L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          23L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          24L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          25L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          26L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}, 
+                          27L: {u'CRB001': {'Mandatory': True, 'ENF': True, 'FORMAT': True}}}
+
+
+for pi in PI_Identification_Code:
+    print pi 

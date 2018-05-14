@@ -1,0 +1,17 @@
+<div class="form-group has-success">
+                                            <label class="col-sm-2 control-label" for="form-field-3" >
+                                                {{form.label_tag}}
+                                            </label>
+                                            
+                                            <div class="col-sm-9">
+                                                
+                                                {% if form.field.widget|is_selectbox == True %}
+                                                    {{form}}<a href="#" onclick="return open_new_window('/add{{form.label_tag|get_labeltag}}', 500,500);">Add <i class="fa  fa-plus fa-lg"></i></a>
+                                                    
+                                                {% else %}
+                                                    {{form}}
+                                                {% endif %}
+                                             
+                                            </div>
+                                            
+                                        </div>

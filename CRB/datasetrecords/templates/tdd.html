@@ -1,0 +1,39 @@
+{% csrf_token %}
+                                        {{ formset.management_form }}
+                                        {% for form in formsp %}
+                                            <div class="form-group has-success">
+                                                <label class="col-sm-2 control-label" for="form-field-3" >
+                                                    {{form.label_tag}}
+                                                </label>
+                                                
+                                                <div class="col-sm-9">
+                                                    {{ form }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="outputformat">Output Format:
+                                            <span class="symbol required"></span>
+                                        </label>
+                                        
+                                        <div class="col-sm-9">
+                                            <select name="outputformat">
+                                                <option name="csv1">CSV</option>
+                                                <option name="Binary Excel" id="excel">xls</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="newforms" class="form-groups">
+                                        </label>
+                                        <div class="col-sm-9sss">
+                                            <input type="text" placeholder="Output File Name" id="form-field-ss1" class="form-control" name="filename">
+                                        </div>      
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-green pull-right" name ="submits">
+                                            Process Request <i class="fa fa-arrow-circle-right"></i>
+                                        </button>
+                                    </div>
+                                        

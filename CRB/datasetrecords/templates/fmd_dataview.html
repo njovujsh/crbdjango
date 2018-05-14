@@ -1,0 +1,186 @@
+{% extends "dashboard.html" %}
+    <!--block for the title-->
+    {% block title %}
+    {{ block.super }} - {{datasetview|title}}
+    {% endblock title %}
+    <!--ending the bock for the title -->
+    
+    <!--block for updating records -->
+    {% block updaterecords %}
+    
+    {% endblock updaterecords %}
+    
+    {% block viewrecords %}
+    
+    {% endblock viewrecords %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    {% block searchforms %}
+        <li class="menu-search">
+            <a href="#">
+                <i class="fa fa-search"></i> SEARCH
+            </a>
+            <!-- start: SEARCH POPOVER -->
+            <div class="popover bottom search-box transition-all">
+                <div class="arrow"></div>
+            <div class="popover-content">
+            <!-- start: SEARCH FORM -->
+                <form class="" id="searchform" action="#">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-main-color btn-squared" type="button">
+                            <i class="fa fa-search"></i>
+                        </button> </span>
+                    </div>
+                </form>
+            <!-- end: SEARCH FORM -->
+            </div>
+            
+            </div>
+            <!-- end: SEARCH POPOVER -->
+        </li>
+    {% endblock searchforms %}
+    
+    {% block dataheader %}
+        <h1>{{who|title}}<small>Currently there are <b><code>{{ datacount }}</code></b> records in {{who}}</small></h1>
+    {% endblock dataheader %}
+    
+    {% block maincontent %}
+    <div class="panel panel-white">
+        <div class="panel-body">
+                <p>
+                    For a full view please hide the left navigation by clicking the three <code>...</code> above the avatar
+                </p>
+                {% if nextpage %}
+                <form role="form" class="form-horizontal" method="post" action="/submission/permanentpurging/deleting/{{who}}/">
+                    {% csrf_token %} 
+                    
+                    {% if deletemode %}
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-green pull-rights" name ="submits">
+                                Delete Selected Records <i class="fa fa-sarrow-circle-right"></i>
+                            </button>
+                        </div>
+                    {% endif %}
+                    
+                    <table class="table table-hover" id="sample-table-1">
+                            
+                            <thead>
+                                <tr>
+                                    {% if deletemode %}
+                                        <th class="centers">
+                                            <div class="checkbox-tables">
+                                                <input type="checkbox" class="flat-grey selectall">
+                                            </div>
+                                        </th>
+                                    {% endif %}
+                                    {% for instance in modelfields %}
+                                        {% if instance|title == "Id" %}
+                                            {% if user.is_superuser %}
+                                                <th>Action</th>
+                                            {% endif %}
+                                        {% else %}
+                                            <th>{{instance|title}}</th>
+                                        {% endif %}
+                                    {% endfor %}
+                                    
+                                   
+                                </tr>
+                            </thead>
+                                                
+                            <tbody>
+                                
+                                
+                            {% for data in nextpage %}
+                                <tr>
+                                        {% if deletemode %}
+                                            <td class="center">
+                                                <div class="checkbox-tables">
+                                                    <input type="checkbox" class="flat-grey foocheck" name="{{data.id}}">
+                                                </div>
+                                            </td>
+                                        {% endif %}
+                                            {%  if user.is_superuser %}
+												<td class="dataid"><a href="/data/updating/indentification/{{who}}/{{data.id}}/">Edit</a></td>
+											{% endif %}
+                                            <td>{{data.PI_Identification_Code}}</td>
+                                            <td>{{data.Branch_Identification_Code}}</td>
+                                            <td>{{data.Client_Number}}</td>
+                                            <td>{{data.Consumer_Classification}}</td>
+                                            <td>{{data.Category_Code}}</td>
+                                            <td>{{data.Sub_Category_Code}}</td>
+                                            <td>{{data.Incident_Date}}</td>
+                                            <td>{{data.Loss_Amount}}</td>
+                                            <td>{{data.Currency_Type}}</td>
+                                            <td>{{data.Incident_Details}}</td>
+                                            <td>{{data.Forensic_Information_Available}}</td>
+                                            <td>{{data.II_Registration_Certificate_Number}}</td>
+                                            <td>{{data.II_Tax_Identification_Number}}</td>
+                                            <td>{{data.II_Value_Added_Tax_Number}}</td>
+                                            <td>{{data.II_FCS_Number}}</td>
+                                            <td>{{data.II_Passport_Number}}</td>
+                                            <td>{{data.II_Drivers_Licence_ID_Number}}</td>
+                                            <td>{{data.II_Voters_PERNO}}</td>
+                                            <td>{{data.II_Drivers_License_Permit_Number}}</td>
+                                            <td>{{data.II_NSSF_Number}}</td>
+                                            <td>{{data.II_Country_ID}}</td>
+                                            <td>{{data.II_Country_Issuing_Authority}}</td>
+                                            <td>{{data.II_Nationality}}</td>
+                                            <td>{{data.II_Police_ID_Number}}</td>
+                                            <td>{{data.II_UPDF_Number}}</td>
+                                            <td>{{data.II_KACITA_License_Number}}</td>
+                                            <td>{{data.II_Public_Service_Pension_Number}}</td>
+                                            <td>{{data.II_Teacher_Registration_Number}}</td>
+                                            <td>{{data.II_Country_Of_Issue}}</td>
+                                            <td>{{data.GSCAFB_Business_Name}}</td>
+                                            <td>{{data.GSCAFB_Trading_Name}}</td>
+                                            <td>{{data.GSCAFB_Activity_Description}}</td>
+                                            <td>{{data.GSCAFB_Industry_Sector_Code}}</td>
+                                            <td>{{data.GSCAFB_Date_Registered}}</td>
+                                            <td>{{data.GSCAFB_Business_Type_Code}}</td>
+                                            <td>{{data.GSCAFB_Surname}}</td>
+                                            <td>{{data.GSCAFB_Forename1}}</td>
+                                            <td>{{data.GSCAFB_Forename2}}</td>
+                                            <td>{{data.GSCAFB_Forename3}}</td>
+                                            <td>{{data.GSCAFB_Gender}}</td>
+                                            <td>{{data.GSCAFB_Marital_Status}}</td>
+                                            <td>{{data.GSCAFB_Date_of_Birth}}</td>
+                                            <td>{{data.EI_Employment_Type}}</td>
+                                            <td>{{data.EI_Primary_Occupation}}</td>
+                                            <td>{{data.EI_Employer_Name}}</td>
+                                            <td>{{data.EI_Employee_Number}}</td>
+                                            <td>{{data.EI_Employment_Date}}</td>
+                                            <td>{{data.EI_Income_Band}}</td>
+                                            <td>{{data.EI_Salary_Frequency}}</td>
+                                            <td>{{data.pci}}</td>
+                                            <td>{{data.sci}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        {% else %}
+                            <p>Unfunately there is not data to display.</p>
+                        {% endif %}
+                    </table>
+                </form>
+        </div>
+        <div class="pagination">
+                    <span class="step-links">
+                    {% if nextpage.has_previous %}
+                        <a href="?page={{ nextpage.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ nextpage.number }} of {{ nextpage.paginator.num_pages }}
+                    </span>
+
+                    {% if nextpage.has_next %}
+                        <a href="?page={{ nextpage.next_page_number }}">Next</a>
+                    {% endif %}
+                    </span>
+            </div>
+    </div>
+    {% endblock %}

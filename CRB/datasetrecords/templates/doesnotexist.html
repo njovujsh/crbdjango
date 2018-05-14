@@ -1,0 +1,22 @@
+{% extends "admindashboard.html" %}
+    {% block extendsuserbase %}
+        <div class="panel panel-white">
+            
+            <div class="panel-body">
+                <p>
+                    {{ERROR}}
+                </p>
+                
+                <h1 class="panel-titles">System Error Analysis!!</h1>
+                {% for k, v in details.iteritems%}
+                    <h4>{{k}} : {{v}}</h4>
+                {% endfor %}
+            </div>
+            
+            
+        </div>
+    {% endblock extendsuserbase %}
+    
+    {% block overridemsg %}
+        <h1 class="panel-titles">An Error has occurred processing request from</h1>
+    {% endblock overridemsg %}

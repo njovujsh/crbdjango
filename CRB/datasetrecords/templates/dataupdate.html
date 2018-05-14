@@ -1,0 +1,58 @@
+{% extends "dashboard.html" %}
+
+    {% block dataheader %}
+        <h1>{{dataset|title}}<small>You are updating {{dataset}} data choosen has id <code><b>{{dataid}}</b></code></small></h1>
+    {% endblock dataheader %}
+    
+    {% block maincontent %}
+                        
+        <!--<div class="col-sm-12">-->
+                        <!-- start: TEXT FIELDS PANEL -->
+                <div class="panel panel-whites">
+					<!--
+                    <div class="panel-heading">
+                        <!--<h4 class="panel-title">Updating <b>{{dataset|title}}</b><span class="text-bold"> ID choosen is <code><b>{{dataid}}</b></code></span></h4>-->
+                    <!--</div>-->
+                         
+                    <div class="panel-body">
+                            <form role="form" class="form-horizontal" method="post" action="/insert/updating/indentification/{{dataset}}/{{dataid}}/">
+                                    {% csrf_token %}
+                                    {{ formset.management_form }}
+                                    {% for form in formss %}
+                                        <div class="form-group has-success">
+                                            <label class="col-sm-2 control-label" for="form-field-3" >
+                                                {{form.label_tag}}
+                                            </label>
+                                            
+                                            <div class="col-sm-9">
+                                                {{ form }}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-green pull-right" name ="submits">
+                                        Submit <i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+                                    
+                                    <button type="submit" class="btn btn-green pull-right" name="submitviews">
+                                        Submit And view <i class="fa fa-arrow-circle-right"></i>
+                                    </button>
+                                </div>
+                                    
+                            </form>
+                    </div>
+                </div>
+                        <!-- end: TEXT FIELDS PANEL -->
+        <!--</div>-->
+                
+       
+                    <!--
+                    <div class="subviews">
+                        <div class="subviews-container"></div>
+                    </div>
+                    -->
+             
+    {% endblock maincontent %}
+
+

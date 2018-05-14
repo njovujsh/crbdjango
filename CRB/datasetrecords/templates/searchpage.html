@@ -1,0 +1,62 @@
+{% extends "admindashboard.html" %}
+    
+    {% load my_custom_tags %}
+    
+    {% block overridemsg %}
+        {% if records_to_search == "all" %}
+              Your Performing a recursive search on all records 
+        {% else %}
+        Searching  will be performs on the following Record <span class="text-bold">{{ records_to_search|purge_underscore }}</span>
+        {% endif %}
+    {% endblock overridemsg %}
+    
+    
+    {% block extendsuserbase %}
+        <h4 id="dataset">{{records_to_search}}</h4>
+    <script type="text/javascript" Language="JavaScript">
+        function nice(data){
+            alert(document.getElementById("postform"));
+            //var form = document.getElementById("postform");
+            /*
+            if(form){
+                form.submit();
+            }
+            else{
+                alert("Inavlid form receied");
+            }
+            alert(data.bye);
+            */
+        }
+    </script>
+    
+        <div class="search-classic">
+            <form action="#" class="form-inline" method="POST" id="postform">
+                {% csrf_token %}
+                <div class="input-group well custom-width ">
+                    <input type="text" class="form-control newwidth"  id="searchingrecords" name="searchdata" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-green" type="button" >
+                            <i class="fa fa-search"></i> Search
+                        </button> 
+                    </span>
+                  
+                </div>
+            </form>
+             
+            <!--Displaying the search results-->                               
+            <h3>Search results From {{records_to_search|purge_underscore}}</h3>
+            
+            <hr>
+            
+            <div class="search-result">
+                <h4 id="setme">  
+                    
+                </h4>
+                <a href="#"></a>
+                
+                <p>
+                </p>
+            </div>
+            <hr>
+        </div>                                   
+    {% endblock extendsuserbase %}

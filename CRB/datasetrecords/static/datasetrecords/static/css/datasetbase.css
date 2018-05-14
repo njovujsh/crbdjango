@@ -1,0 +1,207 @@
+.innerformstyle{
+    background-color:#fff;
+    display:block;
+}
+
+.innerformstyle form{
+    /*
+    margin-left:10%;
+    margin-right:10%;
+    */
+    margin-top: 0px;
+    margin-bottom: px;
+}
+
+.panels-body label{
+    sfont-family: "Helvetica Neue", Helvetica, sans-serif;
+    color: #555;
+    margin-left: px;
+    font-size: 16px;
+    width: 260px;
+    margin-bottom:0;
+    vertical-align:middle;
+}
+
+.panel-body input {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 18px;
+    bsorder:1px solid #000000;
+    outline: none;
+    padding-top:5px;
+    display:block;
+    width:55%;
+    height:30px;
+    paddings:6px 12px;
+    font-size:14px;
+    line-height:1.42857143;
+    color:#555;
+    background-color:#fff;
+    background-image:none;
+    border:1px solid #ccc;
+    border-radius:4px;
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+/*
+.panel-bosdy input[type=text], .panel-body input[type=url], .panel-body input[type=email]{
+    color: #777;
+    padding-left: 10px;
+    margins: 10px;
+    margin-top: 1px;
+    margin-lefts: 88px;
+    width: 60%;
+    height: 30px;
+    border: 1px solid #c7d0d2;
+}
+*/
+    /*
+    border-radius: 2px;
+    box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #f5f7f8;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    transition: all .4s ease;
+    */
+
+.panel-body input[type=text]:hover, .panel-body input[type=url]:hover, .panel-body input[type=email]:hover{
+    border: 2px solid #B8D30B;
+    /*box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;*/
+}
+.panel-body input[type=text]:focus, .panel-body input[type=url]:focus, .panel-body input[type=email]:focus{
+    border: 2px solid #125290;
+    /*box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;*/
+}
+
+.panel-body{
+    /*overflow-y:scroll;*/ 
+    margin-top: auto;
+    clear:both;
+}
+
+.checkbox-table {
+    display: inline-block;
+    margin: 0px 0 0 0;
+    padding-left: 0px;
+    line-height: 0px;
+}
+
+.checkbox-table input{
+    width:15px;
+}
+
+
+.panel-body tr{
+    border-bottom: 1px solid #1F5068; 
+    height:28px;
+    background-color:#F9F9F9;
+    font-size:14px;
+}
+
+.panel-body tr:nth-child(odd){
+    background-color:;
+    border-top: 1px solid #5E2750; /*#F15822*/
+}
+
+.panel-body th{
+    background-color:#2E313E !important;
+    color: #FFFFFF;
+}
+
+.panel-body td{
+    border-left:1px solid #7696A6;
+}
+
+#newforms{  
+    margin-bottom:17px;
+}
+
+.custom{
+    width: 200%;
+}
+
+#id_pci, #id_sci{
+    width:45%;
+}
+
+#id_pci:hover, #id_sci:hover, #id_file_identifier:hover{
+    cursor:pointer;
+}
+
+
+#id_file_identifier{
+    width:200px;
+    height:45px;
+}
+
+.customrowwidth{
+    width:100%;
+}
+
+.custom-width {
+   width:100%;
+}
+
+
+.custom-width  input{
+    height:15%;
+}
+
+.reducesize{
+    font-size:10px !important;
+}
+
+.add-width{
+    width:350px;
+}
+
+
+.padding-r{
+    margin-bottom:10px;
+}
+
+.removebottom{
+   margin-bottom:0px;
+}
+
+.centeroptions{
+    padding:0px;
+    margin-left:40%;
+    margin-top:0px;
+    padding-top:0px;
+}
+
+body{
+    background-color:#ccc;
+    font-weight:bolder;
+}
+
+h1{
+    color:black;
+    font-size:40px;
+}
+
+input[type=file]{
+    margin-left:200px;
+}
+
+.adjusts{
+    width:200px;
+}
+
+#dataset{
+    visibility: hidden;
+}
+
+
+.dataid{
+    width:10px;
+}
+
+#labelsearch{
+    width:350% !important;
+}
+
+
+#form-header-setting{
+    width:60% !important;
+}

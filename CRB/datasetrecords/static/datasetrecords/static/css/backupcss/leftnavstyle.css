@@ -1,0 +1,121 @@
+#leftnavigation{
+    height:100%;
+    font-size:18px; 
+    width:100%;
+    /*
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#E5E5E5));
+	background-image: -moz-linear-gradient(top left 30deg, #E5E5E5 20%, #E5E5E5 100%);
+	background-image: linear-gradient(top left 30deg, #acd6ef 20%, #6ec2e8 100%);
+    */
+	/*border-radius: 1px;*/
+	/*border: 1px solid #66add6;*/
+	/*box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);*/
+    background-color:#F0F0F0;
+}
+
+#leftnavigation ul{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+
+#leftnavigation li a{
+   color: black;
+   cursor: pointer;
+   display:block;
+   line-heights: 25px;
+   text-indent: 0px;       
+   padding-top:15px;       
+   padding-left: 10px; 
+   padding-bottom:5px;
+   text-decoration:none;
+   width:auto;
+   height:30px;
+   color:#000;
+   font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#leftnavigation img{
+	margin-right: 1px;
+	width:21px;
+	height:21px;
+}
+
+#leftnavigation ul li{
+    list-style: none;
+    background:;
+    border-bottom:2px dotted #6EC2E8;
+    /*
+    padding: 0.35em 0px 0.35em 34px;
+	background-image: url('cssimages/finance.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+	*/
+	color:#000;
+}
+
+#leftnavigation a:active{
+    background-color:#000;
+}
+
+#leftnavigation a:link, a:visited{
+    text-decoration: none;
+    color: #000;
+    font-weight:;
+}
+
+#leftnavigation ul li a:hover{
+	background: #1e5799; /* Old browsers */
+    background-color:#6EC2E8;
+	color:white;
+	/*border-right:3px solid #191919;*/
+
+}
+
+/*styling leftnavheader*/
+#leftnavheader{
+    color:white;
+    height:40px;
+    text-align:center;
+    background-color: #acd6ef; /*IE fallback*/
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+	background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+	background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+	border-radius: 1px;
+	border: 1px solid #66add6;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+#leftnavheader h1{
+    padding:0px;
+    margin:0px;
+    font-size:18px;
+    margin-top:10px;
+}
+
+/*styling rightnavactions*/
+#rightnavactions{
+    color:black;
+    height:40px;
+    text-align:center;
+    background:#FFFFFF;
+    background-color: #acd6ef; /*IE fallback*/
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#acd6ef), to(#6ec2e8));
+	background-image: -moz-linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+	background-image: linear-gradient(top left 90deg, #acd6ef 0%, #6ec2e8 100%);
+	border-radius: 1px;
+	border: 1px solid #66add6;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
+} 
+
+#rightnavactions h2{
+   padding:0px;
+   margin:0px;
+   font-size:18px;
+   margin-top:0px;
+}
+
+#profilevieew{
+    height:38px;
+    background-color:#FF0000;
+}

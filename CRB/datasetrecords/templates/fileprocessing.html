@@ -1,0 +1,123 @@
+{% extends "admindashboard.html" %}
+    {% block title %}
+    {{ block.super }} - {{process|title}}
+    {% endblock title %}
+    
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    
+    
+    {% block extendsuserbase %}
+    <div class="col-sm-12s">
+        <div class="panel panel-whites">
+            
+            <div class="panel-body">
+                <form role="form" class="form-horizontal" method="post" action="/file/processid/requested/{{file.id}}/">
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                                    <div class="form-group">
+                                        <div class="scol-lg-7">
+                                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                            {% if fileform.errors %}
+                                                {% for field in fileform %}
+                                                    {% for error in field.errors %}
+                                                        <div class="alert alert-error">
+                                                            <strong>{{field.label_tag}} <code>{{error|escape}} </code></strong>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                {% for error in form.non_field_errors %}
+                                                    <div class="alert alert-error">
+                                                        <strong>Hey there {{error|escape}}</strong>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                            
+                                            {% for form in fileform %}
+                                                <span class="btn btsn-success fileinput-button">
+                                                    <div class="uploadlabel">
+                                                        <label class="col-sm-2 control-label">
+                                                            {{ form.label_tag }}
+                                                        </label>
+                                                    </div>
+                                                </span>
+                                                <div class="uploadinput">
+                                                    {{ form }}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div> 
+                                           
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="outputformat">Select your action?
+                                            <span class="symbol required"></span>
+                                        </label>
+                            
+                                        <div class="col-sm-9">
+                                            <select name="outputformat">
+                                                <option name="void">None</option>
+                                                <option name="validate">Validate File</option>
+                                                <option name="excel2csv">Excel to CSV</option>
+                                                <option name="Binary Excel" id="excel">Read data into database</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                    
+                                    <h4>If reading data into database. Select corresponding records.</h4>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="outputformat">Corresponding Records
+                                            <span class="symbol required"></span>
+                                        </label>
+                            
+                                        <div class="col-sm-9">
+                                            <select name="dataset">
+                                                <option name="nothing">None</option>
+                                                {% for data in left_navs %}
+                                                    <option name="{{data.id}}">{{data.navigation_title|title}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                    
+                       
+                                    <h4> </h4>
+                                    <h4>If Excel To CSV the following will happen.</h4>
+                                    <div class="form-group">
+                                        <ul>
+                                            <li>Excel will be read and converted into csv.</li>
+                                            <li>All <b>Excel</b> sheets will be read with minimal success.</li>
+                                            <li>Every <b>Excel Sheet</b> will be output as a single <b>CSV</b> file.</li>
+                                            <li>Processed sheets as individual csv files will be saved and accessible in procesed file menu.</li>
+                                            <li><code>NOTE: </code> if output is invalid report</li>
+                                        </ul>
+                                    </div>
+                    
+                                    <div class="form-group">
+                                        <!--
+                                        <h3><code>Warning:</code></h3>
+                                        <p>While reading data into the database</p>
+                                        <ul>
+                                            <li>Failure will be possible if incorrect records are selected above.</li>
+                                            <li>Required fields in database are un available in file being read.</li>
+                                            <li>Existing data <b><code>ID</code></b> is found in database.</li>
+                                        </ul>
+                                    </div>
+                                     -->
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-green pull-right" name ="submits">
+                                            Process <i class="fa fa-arrow-circle-right"></i>
+                                        </button>
+                                    </div>
+                             
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock extendsuserbase %}

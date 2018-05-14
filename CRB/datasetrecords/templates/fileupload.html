@@ -1,0 +1,85 @@
+{% extends "admindashboard.html" %}
+
+    {% block title %}
+    {{ block.super }}: {{uploadtitle}}
+    {% endblock title %}
+    
+    {% block dataheader %}
+        <h1>Select file from Disk to upload.</h1><small>Currently there are <code><b>{{count}}</b></code> uploaded files.</small>
+    {% endblock dataheader %}
+   
+    {% block exportdata %}
+    
+    {% endblock exportdata %}
+    
+    {% block innercontent %}
+    
+    {% endblock innercontent %}
+    
+    <!--processing/data/existing/-->
+    {% block extendsuserbase %}
+            <div class="alert alert-success">
+                <p>
+                    <code><b>NOTE:</b></code> For large files probably ranging from <b><code>200mb</code></b>, Require enough time to upload.
+                    A progress will not showup but, you will be automatically<br> redirected to the page,
+                    where the file has been uploaded.
+                    <br>
+                    
+                </p>
+            </div>
+                            <form id="fileupload" action="/file/uploading/newupload/formater/" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                                {{ formset.management_form }}
+                                    <div class="rossw fileuplssoad-buttonbar">
+                                        <div class="col-lg-7">
+                                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                            {% if fileform.errors %}
+                                                {% for field in fileform %}
+                                                    {% for error in field.errors %}
+                                                        <div class="alert alert-error">
+                                                            <strong>{{field.label_tag}} <code>{{error|escape}} </code></strong>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                {% for error in form.non_field_errors %}
+                                                    <div class="alert alert-error">
+                                                        <strong>Hey there {{error|escape}}</strong>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endif %}
+                                            
+                                            {% for form in fileform %}
+                                            <!--
+                                                <span class="">
+                                                     {{ form.label_tag }}
+                                                </span>
+                                                <div class="uploadinput">
+                                                    {{ form }}
+                                                </div>
+                                                -->
+                                                <div class="form-group has-success">
+                                                    <label class="col-sm-2 control-label" for="form-field-3" >
+                                                            {{form.label_tag}}
+                                                    </label>
+                                                        
+                                                    <div class="col-sm-9">
+                                                                {{form}}
+                                                    </div>
+                                                        
+                                                </div>
+                                            {% endfor %}
+                                            
+                                            
+                                        </div>
+                                        
+                                        
+                                        <button type="submit" class="btn btn-primary start">
+                                                <i class="glyphicon glyphicon-upload"></i>
+                                                <span>Start uploading</span>
+                                            </button>
+                                            <span class="fileupload-loading"></span>
+                                        
+                                    </div>
+                            </form>
+    {% endblock extendsuserbase %}
